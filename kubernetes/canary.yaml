@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: god-level-ide-canary
+  namespace: god-level-ide
+  labels:
+    app: god-level-ide
+    track: canary
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: god-level-ide
+      track: canary
+  template:
+    metadata:
+      labels:
+        app: god-level-ide
+        track: canary
+    spec:
+      containers:
+      - name: god-ide
+        image: godlevelide/core:canary
+        ports:
+        - containerPort: 1420
+        env:
+        - name: GEMINI_API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: gemini-key
+              key: api-key

@@ -1,0 +1,68 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: god-level-ide-controller
+  namespace: god-level-ide
+  labels:
+    app: god-level-ide
+spec:
+  replicas: 3
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  selector:
+    matchLabels:
+      app: god-level-ide
+  template:
+    metadata:
+      labels:
+        app: god-level-ide
+    spec:
+      containers:
+      - name: ide-core
+        image: godlevelide/core:2026.1
+        ports:
+        - containerPort: 8080
+        resources:
+          requests:
+            memory: "512Mi"
+            cpu: "500m"
+          limits:
+            memory: "4Gi"
+            cpu: "2000m"
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8080
+          initialDelaySeconds: 30
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /ready
+            port: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: agent-compute-node
+  namespace: god-level-ide
+spec:
+  replicas: 10 # Scalable Agent Workers
+  selector:
+    matchLabels:
+      app: agent-worker
+  template:
+    metadata:
+      labels:
+        app: agent-worker
+    spec:
+      containers:
+      - name: agent-worker
+        image: godlevelide/agent-worker:2026.1
+        env:
+        - name: MCP_GATEWAY
+          value: "http://god-level-ide-service:8080"
+        - name: MAX_TOKENS
+          value: "128000"

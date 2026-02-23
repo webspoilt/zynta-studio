@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: god-level-ide
+  namespace: god-level-ide
+spec:
+  rules:
+  - host: ide.example.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: god-level-ide-service
+            port:
+              number: 80
