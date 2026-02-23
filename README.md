@@ -1,5 +1,7 @@
 <div align="center">
   <img src="https://capsule-render.vercel.app/api?type=waving&color=0:0f0f1a,100:6d28d9&height=300&section=header&text=Zynta%20Studio&fontSize=90&fontColor=ffffff&animation=fadeIn&fontAlignY=38&desc=Next-Gen%20Agentic%20Development%20Environment&descAlignY=51&descAlign=62" alt="Zynta Studio Header" />
+  <br/><br/>
+  <img src="public/logo-full.svg" alt="Zynta Studio Logo" height="80" />
 
   <h2>🌌 Crafted with ❤️ by <a href="https://x.com/Gh0st_118" target="_blank">Zeroday</a></h2>
   <p>
