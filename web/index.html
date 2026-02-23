@@ -24,7 +24,6 @@
             --violet: #8b5cf6;
             --cyan: #22d3ee;
             --glow-indigo: rgba(99, 102, 241, 0.4);
-            --glow-cyan: rgba(34, 211, 238, 0.3);
         }
 
         *,
@@ -48,15 +47,79 @@
             line-height: 1.6;
         }
 
-        /* Advanced Background Effects */
+        /* --- ANIMATION CLASSES --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-15px) rotate(2deg);
+            }
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+                box-shadow: 0 0 10px var(--cyan);
+            }
+
+            50% {
+                opacity: 0.5;
+                box-shadow: 0 0 20px var(--cyan);
+            }
+        }
+
+        @keyframes shine {
+            0% {
+                left: -100%;
+            }
+
+            100% {
+                left: 100%;
+            }
+        }
+
+        @keyframes typing {
+            from {
+                width: 0;
+            }
+
+            to {
+                width: 100%;
+            }
+        }
+
+        @keyframes blink {
+            50% {
+                border-color: transparent;
+            }
+        }
+
+        /* --- BACKGROUND EFFECTS --- */
         .bg-grid {
             position: fixed;
             inset: 0;
             background-image:
-                linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
             background-size: 64px 64px;
-            mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+            mask-image: radial-gradient(ellipse at center, black 20%, transparent 70%);
             pointer-events: none;
             z-index: 0;
         }
@@ -64,52 +127,42 @@
         .orb {
             position: fixed;
             border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.6;
+            filter: blur(100px);
+            opacity: 0.5;
             pointer-events: none;
             z-index: 0;
-            animation: floatOrb 20s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .orb-1 {
-            width: 600px;
-            height: 600px;
-            top: -200px;
+            width: 800px;
+            height: 800px;
+            top: -300px;
             left: -200px;
             background: radial-gradient(circle, var(--indigo), transparent 60%);
+            animation: float 25s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .orb-2 {
-            width: 500px;
-            height: 500px;
-            bottom: -100px;
+            width: 600px;
+            height: 600px;
+            bottom: -200px;
             right: -100px;
             background: radial-gradient(circle, var(--cyan), transparent 60%);
-            animation-delay: -10s;
+            animation: float 20s infinite alternate-reverse cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .orb-3 {
-            width: 400px;
-            height: 400px;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: radial-gradient(circle, var(--violet), transparent 60%);
-            opacity: 0.2;
-            animation-delay: -5s;
+        /* Noise Texture Overlay */
+        body::after {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.04;
+            pointer-events: none;
+            z-index: 1;
         }
 
-        @keyframes floatOrb {
-            0% {
-                transform: translate(0, 0) scale(1);
-            }
-
-            100% {
-                transform: translate(50px, 30px) scale(1.1);
-            }
-        }
-
-        /* NAVIGATION */
+        /* --- NAV --- */
         nav {
             position: fixed;
             top: 0;
@@ -120,7 +173,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(5, 5, 8, 0.7);
+            background: rgba(5, 5, 8, 0.8);
             backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border);
         }
@@ -137,6 +190,11 @@
             width: 32px;
             height: 32px;
             filter: drop-shadow(0 0 12px var(--indigo));
+            transition: transform 0.3s ease;
+        }
+
+        .nav-logo:hover svg {
+            transform: rotate(10deg) scale(1.1);
         }
 
         .nav-brand {
@@ -158,10 +216,26 @@
             font-size: 14px;
             font-weight: 500;
             transition: color 0.2s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--indigo);
+            transition: width 0.3s ease;
         }
 
         .nav-links a:hover {
             color: white;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
         }
 
         .nav-btn {
@@ -177,14 +251,14 @@
         }
 
         .nav-btn:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 25px rgba(255, 255, 255, 0.2);
         }
 
-        /* HERO SECTION */
+        /* --- HERO --- */
         .hero {
             position: relative;
-            z-index: 1;
+            z-index: 2;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -207,7 +281,7 @@
             letter-spacing: 1px;
             color: var(--cyan);
             margin-bottom: 32px;
-            animation: fadeInUp 0.8s ease-out;
+            animation: fadeInDown 0.8s ease-out both;
         }
 
         .hero-badge::before {
@@ -229,7 +303,7 @@
             background: linear-gradient(135deg, #fff 0%, #fff 50%, #aaa 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            animation: fadeInUp 0.8s ease-out 0.1s both;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
         }
 
         .hero-subtitle {
@@ -239,12 +313,15 @@
             margin-bottom: 48px;
             font-weight: 400;
             line-height: 1.6;
-            animation: fadeInUp 0.8s ease-out 0.2s both;
+            animation: fadeInUp 0.8s ease-out 0.4s both;
         }
 
         .hero-subtitle strong {
             color: white;
             font-weight: 600;
+            background: linear-gradient(90deg, #fff, var(--cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .hero-actions {
@@ -252,9 +329,10 @@
             gap: 16px;
             flex-wrap: wrap;
             justify-content: center;
-            animation: fadeInUp 0.8s ease-out 0.3s both;
+            animation: fadeInUp 0.8s ease-out 0.6s both;
         }
 
+        /* --- BUTTONS --- */
         .btn {
             padding: 16px 32px;
             border-radius: 12px;
@@ -267,6 +345,8 @@
             gap: 10px;
             border: none;
             cursor: pointer;
+            position: relative;
+            overflow: hidden;
         }
 
         .btn-primary {
@@ -275,8 +355,24 @@
             box-shadow: 0 10px 30px -10px var(--glow-indigo);
         }
 
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: 0.5s;
+            transition-delay: 0.1s;
+        }
+
+        .btn-primary:hover::before {
+            animation: shine 1s;
+        }
+
         .btn-primary:hover {
-            transform: translateY(-2px);
+            transform: translateY(-2px) scale(1.02);
             box-shadow: 0 15px 40px -10px var(--glow-indigo);
         }
 
@@ -290,15 +386,16 @@
         .btn-ghost:hover {
             background: var(--card-hover);
             border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
         }
 
-        /* Hero Visual Element */
+        /* --- HERO VISUAL --- */
         .hero-visual {
             margin-top: 80px;
             width: 100%;
             max-width: 900px;
             aspect-ratio: 16/9;
-            background: linear-gradient(135deg, var(--bg-elevated), rgba(20, 20, 30, 0.8));
+            background: rgba(10, 10, 15, 0.8);
             border-radius: 20px;
             border: 1px solid var(--border);
             box-shadow:
@@ -306,50 +403,81 @@
                 0 0 0 1px rgba(255, 255, 255, 0.05) inset;
             position: relative;
             overflow: hidden;
-            animation: fadeInUp 1s ease-out 0.5s both;
+            animation: fadeInUp 1s ease-out 0.8s both;
             display: flex;
             align-items: center;
-            justify-content: center;
-        }
-
-        .hero-visual::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%236366f1' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-            opacity: 0.5;
+            padding: 40px;
         }
 
         .visual-code {
             font-family: 'JetBrains Mono', monospace;
             font-size: 14px;
             color: var(--muted);
-            background: rgba(0, 0, 0, 0.5);
-            padding: 20px;
-            border-radius: 12px;
-            border: 1px solid var(--border);
-            backdrop-filter: blur(10px);
-            z-index: 1;
             text-align: left;
-            max-width: 80%;
+            width: 100%;
         }
 
-        .visual-code .kw {
+        .visual-code .line {
+            display: block;
+            margin-bottom: 8px;
+            opacity: 0;
+            transform: translateX(-10px);
+            animation: slideInCode 0.5s ease forwards;
+        }
+
+        .visual-code .line:nth-child(1) {
+            animation-delay: 1.2s;
+        }
+
+        .visual-code .line:nth-child(2) {
+            animation-delay: 1.4s;
+        }
+
+        .visual-code .line:nth-child(3) {
+            animation-delay: 1.6s;
+        }
+
+        .visual-code .line:nth-child(4) {
+            animation-delay: 1.8s;
+        }
+
+        .visual-code .line:nth-child(5) {
+            animation-delay: 2.0s;
+        }
+
+        @keyframes slideInCode {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .kw {
             color: var(--violet);
         }
 
-        .visual-code .fn {
+        .fn {
             color: var(--cyan);
         }
 
-        .visual-code .str {
+        .str {
             color: #a5f3fc;
         }
 
-        /* SECTION STYLES */
+        .cursor {
+            display: inline-block;
+            width: 8px;
+            height: 18px;
+            background: var(--cyan);
+            margin-left: 4px;
+            vertical-align: middle;
+            animation: blink 1s infinite;
+        }
+
+        /* --- SECTION --- */
         section {
             position: relative;
-            z-index: 1;
+            z-index: 2;
             padding: 120px 24px;
             max-width: 1200px;
             margin: 0 auto;
@@ -368,6 +496,10 @@
             color: var(--indigo);
             text-transform: uppercase;
             margin-bottom: 16px;
+            background: rgba(99, 102, 241, 0.1);
+            padding: 6px 12px;
+            border-radius: 6px;
+            border: 1px solid rgba(99, 102, 241, 0.2);
         }
 
         .section-title {
@@ -387,7 +519,7 @@
             margin: 0 auto;
         }
 
-        /* FEATURE GRID */
+        /* --- FEATURES --- */
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -404,26 +536,29 @@
             overflow: hidden;
         }
 
-        .feature-card::after {
+        /* Card Hover Glow Effect */
+        .feature-card::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            bottom: 0;
+            background: radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), rgba(255, 255, 255, 0.06), transparent 40%);
             opacity: 0;
-            transition: opacity 0.4s;
+            transition: opacity 0.3s;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .feature-card:hover::before {
+            opacity: 1;
         }
 
         .feature-card:hover {
             background: var(--card-hover);
             border-color: rgba(255, 255, 255, 0.15);
-            transform: translateY(-4px);
-        }
-
-        .feature-card:hover::after {
-            opacity: 1;
+            transform: translateY(-6px);
         }
 
         .feature-icon {
@@ -437,21 +572,31 @@
             font-size: 20px;
             margin-bottom: 20px;
             border: 1px solid var(--border);
+            transition: transform 0.3s, background 0.3s;
+        }
+
+        .feature-card:hover .feature-icon {
+            transform: scale(1.1) rotate(-5deg);
+            background: rgba(99, 102, 241, 0.1);
         }
 
         .feature-card h3 {
             font-size: 18px;
             font-weight: 700;
             margin-bottom: 8px;
+            position: relative;
+            z-index: 1;
         }
 
         .feature-card p {
             font-size: 14px;
             color: var(--muted);
             line-height: 1.7;
+            position: relative;
+            z-index: 1;
         }
 
-        /* ARCHITECTURE FLOW */
+        /* --- ARCHITECTURE --- */
         .arch-flow {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -463,21 +608,40 @@
             border: 1px solid var(--border);
             border-radius: 16px;
             padding: 24px;
-            position: relative;
             transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Animated Border */
+        .arch-step::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 0;
+            background: var(--indigo);
+            transition: height 0.3s ease;
         }
 
         .arch-step:hover {
             background: var(--card-hover);
             border-color: rgba(255, 255, 255, 0.1);
+            transform: translateX(4px);
+        }
+
+        .arch-step:hover::after {
+            height: 100%;
         }
 
         .arch-num {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 12px;
+            font-size: 11px;
             color: var(--indigo);
             margin-bottom: 12px;
             display: block;
+            letter-spacing: 1px;
         }
 
         .arch-step h4 {
@@ -491,7 +655,7 @@
             line-height: 1.6;
         }
 
-        /* DOWNLOAD SECTION */
+        /* --- DOWNLOAD --- */
         .download-container {
             background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.05));
             border: 1px solid rgba(99, 102, 241, 0.2);
@@ -510,7 +674,7 @@
             width: 200%;
             height: 200%;
             background: radial-gradient(circle at center, rgba(99, 102, 241, 0.15), transparent 50%);
-            animation: rotate 20s linear infinite;
+            animation: rotate 30s linear infinite;
         }
 
         @keyframes rotate {
@@ -540,10 +704,10 @@
             font-size: 16px;
         }
 
-        /* FOOTER */
+        /* --- FOOTER --- */
         footer {
             position: relative;
-            z-index: 1;
+            z-index: 2;
             padding: 60px 24px;
             border-top: 1px solid var(--border);
             text-align: center;
@@ -580,11 +744,11 @@
             font-size: 12px;
         }
 
-        /* ANIMATIONS */
+        /* --- KEYFRAMES --- */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(20px);
+                transform: translateY(30px);
             }
 
             to {
@@ -593,19 +757,18 @@
             }
         }
 
-        @keyframes pulse {
-
-            0%,
-            100% {
-                opacity: 1;
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
             }
 
-            50% {
-                opacity: 0.4;
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
 
-        /* RESPONSIVE */
         @media (max-width: 768px) {
             nav {
                 padding: 16px 20px;
@@ -619,13 +782,8 @@
                 padding: 120px 20px 80px;
             }
 
-            .hero-title {
-                letter-spacing: -1px;
-            }
-
             .visual-code {
                 font-size: 12px;
-                padding: 16px;
             }
 
             section {
@@ -640,7 +798,6 @@
     <div class="bg-grid"></div>
     <div class="orb orb-1"></div>
     <div class="orb orb-2"></div>
-    <div class="orb orb-3"></div>
 
     <!-- NAVBAR -->
     <nav>
@@ -663,9 +820,7 @@
             <li><a href="#architecture">Architecture</a></li>
             <li><a href="#download">Download</a></li>
         </ul>
-        <a href="https://github.com/webspoilt/god-level-ide" target="_blank" class="nav-btn">
-            View on GitHub
-        </a>
+        <a href="https://github.com/webspoilt/zynta-studio" target="_blank" class="nav-btn">View on GitHub</a>
     </nav>
 
     <!-- HERO -->
@@ -688,7 +843,7 @@
                 </svg>
                 Download for Windows
             </a>
-            <a href="https://github.com/webspoilt/god-level-ide" target="_blank" class="btn btn-ghost">
+            <a href="https://github.com/webspoilt/zynta-studio" target="_blank" class="btn btn-ghost">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                     <path
                         d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
@@ -699,58 +854,55 @@
 
         <div class="hero-visual">
             <div class="visual-code">
-                <div><span class="kw">use</span> zynta::agents::<span class="fn">Orchestrator</span>;</div>
-                <div style="margin-top:8px;"><span class="kw">let</span> result = Orchestrator::<span
-                        class="fn">new</span>()</div>
-                <div style="padding-left:20px;">.<span class="fn">spawn</span>(<span
-                        class="str">"frontend_agent"</span>)</div>
-                <div style="padding-left:20px;">.<span class="fn">execute</span>(<span class="str">"Build the
-                        UI"</span>)</div>
-                <div style="padding-left:20px;">.<span class="kw">await</span>?;</div>
+                <div class="line"><span class="kw">use</span> zynta::agents::<span class="fn">Orchestrator</span>;</div>
+                <div class="line"><span class="kw">let</span> result = Orchestrator::<span class="fn">new</span>()</div>
+                <div class="line"> .<span class="fn">spawn</span>(<span class="str">"frontend_agent"</span>)</div>
+                <div class="line"> .<span class="fn">execute</span>(<span class="str">"Build the UI"</span>)</div>
+                <div class="line"> .<span class="kw">await</span>?;<span class="cursor"></span></div>
             </div>
         </div>
     </section>
 
     <!-- FEATURES -->
     <section id="features">
-        <div class="section-header">
+        <div class="section-header reveal">
             <span class="section-tag">Capabilities</span>
             <h2 class="section-title">Built Different.</h2>
-            <p class="section-desc">Every layer of Zynta Studio is engineered for the agentic AI era.</p>
+            <p class="section-desc">Every layer of Zynta Studio is meticulously engineered from the ground up.</p>
         </div>
 
         <div class="features-grid">
-            <div class="feature-card">
+            <div class="feature-card reveal">
                 <div class="feature-icon">💾</div>
                 <h3>Transactional VFS</h3>
                 <p>Atomic file operations with idempotency verification. Built-in transaction managers with
                     time-traveling, snapshot-based Undo/Redo.</p>
             </div>
-            <div class="feature-card">
+            <div class="feature-card reveal">
                 <div class="feature-icon">📡</div>
                 <h3>MCP Infrastructure</h3>
                 <p>Enterprise-grade observability via Model Context Protocol. Continuous telemetry, execution latency,
-                    and AI hallucination rate tracking.</p>
+                    and anomaly detection tracking.</p>
             </div>
-            <div class="feature-card">
+            <div class="feature-card reveal">
                 <div class="feature-icon">🤖</div>
                 <h3>SEMAP Orchestration</h3>
                 <p>Software Engineering Multi-Agent Protocol. Actor-model architecture mapping specialized agents to
                     Frontend, Backend, and DevOps roles.</p>
             </div>
-            <div class="feature-card">
+            <div class="feature-card reveal">
                 <div class="feature-icon">⚖️</div>
                 <h3>Agent Exchange (AEX)</h3>
                 <p>Combinatorial Auctioning Engine. Distributes workloads to agents based on token capacity, context
                     alignment, and operational cost.</p>
             </div>
-            <div class="feature-card">
+            <div class="feature-card reveal">
                 <div class="feature-icon">🎨</div>
                 <h3>Generative Visual UI</h3>
                 <p>Real-time dynamic execution graphs via VisualLogicTree. Watch agentic pathways form as code is
                     generated live.</p>
             </div>
-            <div class="feature-card">
+            <div class="feature-card reveal">
                 <div class="feature-icon">🛡️</div>
                 <h3>Red-Teaming Engine</h3>
                 <p>Adversarial RedTeamAgents launch continuous jailbreaks countered by BlueTeam live-patching.
@@ -761,62 +913,54 @@
 
     <!-- ARCHITECTURE -->
     <section id="architecture">
-        <div class="section-header">
+        <div class="section-header reveal">
             <span class="section-tag">Blueprint</span>
             <h2 class="section-title">7-Phase Architecture</h2>
-            <p class="section-desc">Synthesized from Kimi, Minimax, GLM-5, and Deepseek's best architectural designs.
-            </p>
+            <p class="section-desc">A meticulously hand-crafted, ground-up systems architecture by Zeroday.</p>
         </div>
 
         <div class="arch-flow">
-            <div class="arch-step">
-                <span class="arch-num">PHASE 01</span>
+            <div class="arch-step reveal"><span class="arch-num">PHASE 01</span>
                 <h4>Transactional VFS</h4>
-                <p>Atomic operations, idempotency, time-travel snapshots, and Undo/Redo.</p>
+                <p>Atomic operations with time-travel snapshots.</p>
             </div>
-            <div class="arch-step">
-                <span class="arch-num">PHASE 02</span>
+            <div class="arch-step reveal"><span class="arch-num">PHASE 02</span>
                 <h4>MCP Telemetry</h4>
-                <p>OAuth2 auth, Prometheus metrics, KPI collector tracking task success.</p>
+                <p>Prometheus metrics & KPI tracking.</p>
             </div>
-            <div class="arch-step">
-                <span class="arch-num">PHASE 03</span>
+            <div class="arch-step reveal"><span class="arch-num">PHASE 03</span>
                 <h4>SEMAP Orchestration</h4>
-                <p>Actor-model agents with shared knowledge bases and debate consensus.</p>
+                <p>Actor-model multi-agent system.</p>
             </div>
-            <div class="arch-step">
-                <span class="arch-num">PHASE 04</span>
+            <div class="arch-step reveal"><span class="arch-num">PHASE 04</span>
                 <h4>Agent Exchange</h4>
-                <p>Combinatorial auction engine matching tasks to agents by capacity.</p>
+                <p>Combinatorial auction engine.</p>
             </div>
-            <div class="arch-step">
-                <span class="arch-num">PHASE 05</span>
+            <div class="arch-step reveal"><span class="arch-num">PHASE 05</span>
                 <h4>Generative UI</h4>
-                <p>Visual logic tree rendering in React + Tauri via IPC commands.</p>
+                <p>React + Tauri visualization.</p>
             </div>
-            <div class="arch-step">
-                <span class="arch-num">PHASE 06</span>
+            <div class="arch-step reveal"><span class="arch-num">PHASE 06</span>
                 <h4>Red / Blue Team</h4>
-                <p>Adversarial attacker agents vs defender agents with live patches.</p>
+                <p>Adversarial security simulation.</p>
             </div>
-            <div class="arch-step">
-                <span class="arch-num">PHASE 07</span>
+            <div class="arch-step reveal"><span class="arch-num">PHASE 07</span>
                 <h4>CI/CD Self-Healing</h4>
-                <p>HPA, ingress, canary deployments, and namespace isolation.</p>
+                <p>Kubernetes auto-scaling.</p>
             </div>
         </div>
     </section>
 
     <!-- DOWNLOAD -->
     <section id="download">
-        <div class="download-container">
+        <div class="download-container reveal">
             <div class="download-content">
                 <h2 class="download-title">Get Zynta Studio</h2>
                 <p class="download-desc">Download the native Windows executable or clone the source to build your own.
                 </p>
 
-                <div class="hero-actions" style="justify-content: center;">
-                    <a href="https://github.com/webspoilt/god-level-ide/releases" target="_blank"
+                <div class="hero-actions" style="justify-content: center; animation: none;">
+                    <a href="https://github.com/webspoilt/zynta-studio/releases" target="_blank"
                         class="btn btn-primary">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2">
@@ -826,7 +970,7 @@
                         </svg>
                         Download .exe
                     </a>
-                    <a href="https://github.com/webspoilt/god-level-ide" target="_blank" class="btn btn-ghost">
+                    <a href="https://github.com/webspoilt/zynta-studio" target="_blank" class="btn btn-ghost">
                         Clone Repository
                     </a>
                 </div>
@@ -838,12 +982,12 @@
     <footer>
         <div class="footer-content">
             <svg width="40" height="40" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" style="opacity: 0.5;">
-                <polygon points="19,2 45,2 62,19 62,45 45,62 19,62 2,45 2,19" fill="#6366f1" />
-                <text x="32" y="44" text-anchor="middle" font-family="Arial Black" font-size="28" font-weight="900"
+                <polygon points="19,2 45,2 62,19 62,45 45,62 19,62 2,45 2,19" fill="#6366f1" /><text x="32" y="44"
+                    text-anchor="middle" font-family="Arial Black" font-size="28" font-weight="900"
                     fill="white">Z</text>
             </svg>
             <ul class="footer-links">
-                <li><a href="https://github.com/webspoilt/god-level-ide" target="_blank">GitHub</a></li>
+                <li><a href="https://github.com/webspoilt/zynta-studio" target="_blank">GitHub</a></li>
                 <li><a href="https://x.com/Gh0st_118" target="_blank">Twitter</a></li>
                 <li><a href="https://www.linkedin.com/in/webspoilt/" target="_blank">LinkedIn</a></li>
                 <li><a href="mailto:heyzerodayhere@gmail.com">Email</a></li>
@@ -851,6 +995,49 @@
             <p class="footer-copy">© 2026 Zynta Studio · GPL-3.0 License · Built by Zeroday</p>
         </div>
     </footer>
+
+    <!-- JAVASCRIPT FOR INTERACTIVITY -->
+    <script>
+        // 1. Scroll Reveal Animation
+        const reveals = document.querySelectorAll('.reveal');
+
+        const revealOnScroll = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        reveals.forEach(reveal => {
+            revealOnScroll.observe(reveal);
+        });
+
+        // 2. Card Mouse Follow Glow Effect
+        const cards = document.querySelectorAll('.feature-card');
+
+        cards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+
+        // 3. Simple Parallax for Orbs
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const orb1 = document.querySelector('.orb-1');
+            const orb2 = document.querySelector('.orb-2');
+
+            if (orb1) orb1.style.transform = `translateY(${scrolled * 0.2}px)`;
+            if (orb2) orb2.style.transform = `translateY(${scrolled * -0.1}px)`;
+        });
+    </script>
 </body>
 
 </html>
