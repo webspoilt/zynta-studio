@@ -1,13 +1,13 @@
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
-  name: god-level-ide
-  namespace: god-level-ide
+  name: zynta-studio
+  namespace: zynta-studio
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: god-level-ide-controller
+    name: zynta-studio-controller
   minReplicas: 3
   maxReplicas: 10
   metrics:

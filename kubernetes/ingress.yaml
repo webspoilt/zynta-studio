@@ -1,8 +1,8 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: god-level-ide
-  namespace: god-level-ide
+  name: zynta-studio
+  namespace: zynta-studio
 spec:
   rules:
   - host: ide.example.com
@@ -12,6 +12,6 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: god-level-ide-service
+            name: zynta-studio-service
             port:
               number: 80

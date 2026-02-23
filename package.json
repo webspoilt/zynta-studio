@@ -1,8 +1,9 @@
 {
-  "name": "god-ide",
+  "name": "zynta-studio",
   "private": true,
   "version": "0.1.0",
   "type": "module",
+  "description": "Zynta Studio - Next-gen multi-agent powered agentic IDE",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",

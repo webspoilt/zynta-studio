@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: god-level-ide-canary
-  namespace: god-level-ide
+  name: zynta-studio-canary
+  namespace: zynta-studio
   labels:
-    app: god-level-ide
+    app: zynta-studio
     track: canary
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: god-level-ide
+      app: zynta-studio
       track: canary
   template:
     metadata:
       labels:
-        app: god-level-ide
+        app: zynta-studio
         track: canary
     spec:
       containers:

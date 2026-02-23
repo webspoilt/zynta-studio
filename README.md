@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:000000,100:4338ca&height=300&section=header&text=God-Level%20IDE&fontSize=90&fontColor=ffffff&animation=fadeIn&fontAlignY=38&desc=The%20Next-Gen%20Agentic%20Development%20Experience&descAlignY=51&descAlign=62" alt="God-Level IDE Header" />
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:0f0f1a,100:6d28d9&height=300&section=header&text=Zynta%20Studio&fontSize=90&fontColor=ffffff&animation=fadeIn&fontAlignY=38&desc=Next-Gen%20Agentic%20Development%20Environment&descAlignY=51&descAlign=62" alt="Zynta Studio Header" />
 
   <h2>🌌 Crafted with ❤️ by <a href="https://x.com/Gh0st_118" target="_blank">Zeroday</a></h2>
   <p>
@@ -17,7 +17,7 @@
 
 <br />
 
-> **God-Level IDE** integrates cutting-edge concepts from generative AI, decentralized agent orchestration, and atomic virtual file systems. Based on a unified blueprint synthesizing the best architectural designs from **Kimi, Minimax, GLM-5, and Deepseek**.
+> **Zynta Studio** integrates cutting-edge concepts from generative AI, decentralized agent orchestration, and atomic virtual file systems. Based on a unified blueprint synthesizing the best architectural designs from **Kimi, Minimax, GLM-5, and Deepseek**.
 
 ---
 
@@ -74,7 +74,7 @@ npm install
 npm run tauri build
 ```
 <p align="center">
-  <i>✨ That's it! Your shiny new executable will be waiting for you inside: ✨<br><code>src-tauri/target/release/bundle/msi/</code> and <code>src-tauri/target/release/</code></i>
+  <i>✨ That's it! Your shiny new executable will be waiting for you inside: ✨<br><code>src-tauri/target/release/bundle/nsis/</code> and <code>src-tauri/target/release/</code></i>
 </p>
 
 ---
@@ -94,9 +94,9 @@ Check the **Issues** tab to start contributing to this awesome framework. We nee
 
 ### 📝 How to Contribute
 1. **Fork** the repository ✨
-2. Create your Feature Branch: `git checkout -b feature/MatrixMode`
-3. Commit your changes: `git commit -m 'feat: Add Matrix Mode'`
-4. Push to the branch: `git push origin feature/MatrixMode`
+2. Create your Feature Branch: `git checkout -b feature/AmazingFeature`
+3. Commit your changes: `git commit -m 'feat: Add AmazingFeature'`
+4. Push to the branch: `git push origin feature/AmazingFeature`
 5. Open a **Pull Request** 🚀
 
 ---
@@ -119,5 +119,5 @@ Check the **Issues** tab to start contributing to this awesome framework. We nee
 
 <br/>
 <div align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:000000,100:4338ca&height=100&section=footer" width="100%" />
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:0f0f1a,100:6d28d9&height=100&section=footer" width="100%" />
 </div>

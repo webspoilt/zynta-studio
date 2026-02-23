@@ -1,10 +1,10 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: god-level-ide-controller
-  namespace: god-level-ide
+  name: zynta-studio-controller
+  namespace: zynta-studio
   labels:
-    app: god-level-ide
+    app: zynta-studio
 spec:
   replicas: 3
   strategy:
@@ -14,11 +14,11 @@ spec:
       maxUnavailable: 0
   selector:
     matchLabels:
-      app: god-level-ide
+      app: zynta-studio
   template:
     metadata:
       labels:
-        app: god-level-ide
+        app: zynta-studio
     spec:
       containers:
       - name: ide-core
@@ -47,7 +47,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: agent-compute-node
-  namespace: god-level-ide
+  namespace: zynta-studio
 spec:
   replicas: 10 # Scalable Agent Workers
   selector:
@@ -63,6 +63,6 @@ spec:
         image: godlevelide/agent-worker:2026.1
         env:
         - name: MCP_GATEWAY
-          value: "http://god-level-ide-service:8080"
+          value: "http://zynta-studio-service:8080"
         - name: MAX_TOKENS
           value: "128000"

@@ -15,7 +15,7 @@ function App() {
 
     return (
         <div style={{ padding: '20px', fontFamily: 'sans-serif' }}>
-            <h1>God-Level IDE</h1>
+            <h1>Zynta Studio</h1>
             <button onClick={handleGenerateTheme} style={{ padding: '10px', marginBottom: '20px', cursor: 'pointer' }}>Generate Theme</button>
             <div style={{ height: '600px', border: '1px solid #ccc' }}>
                 <VisualLogicTree />

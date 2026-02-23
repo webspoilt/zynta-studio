@@ -1,7 +1,7 @@
 {
-    "productName": "GodLevelIDE",
+    "productName": "ZyntaStudio",
     "version": "0.1.0",
-    "identifier": "com.godlevelide.dev",
+    "identifier": "com.zyntastudio.dev",
     "build": {
         "beforeDevCommand": "npm run dev",
         "beforeBuildCommand": "npm run build",
@@ -11,7 +11,7 @@
     "app": {
         "windows": [
             {
-                "title": "God-Level IDE",
+                "title": "Zynta Studio",
                 "width": 1440,
                 "height": 1024,
                 "resizable": true,
