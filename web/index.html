@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Zynta Studio — Next-gen multi-agent powered agentic IDE built on Rust & React." />
+    <title>Zynta Studio</title>
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><defs><linearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'><stop offset='0%25' stop-color='%236366f1'/><stop offset='100%25' stop-color='%2322d3ee'/></linearGradient></defs><polygon points='9.5,1 22.5,1 31,9.5 31,22.5 22.5,31 9.5,31 1,22.5 1,9.5' fill='url(%23g)'/><text x='16' y='22' text-anchor='middle' font-family='Arial Black' font-size='16' font-weight='900' fill='white'>Z</text></svg>" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Space+Grotesk:wght@300;400;500;600&display=swap" />
+    <style>
+        :root {
+            --bg: #080810;
+            --card: #0e0e1c;
+            --card2: #12121f;
+            --border: #1e1e30;
+            --text: #f0f0f8;
+            --muted: #7a7a9a;
+            --indigo: #6366f1;
+            --violet: #8b5cf6;
+            --cyan: #22d3ee;
+        }
+
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Grid overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(99, 102, 241, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(99, 102, 241, 0.04) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Ambient glows */
+        .glow {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(130px);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .glow-1 {
+            width: 600px;
+            height: 600px;
+            top: -200px;
+            left: -200px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.25), transparent 70%);
+        }
+
+        .glow-2 {
+            width: 500px;
+            height: 500px;
+            bottom: -150px;
+            right: -150px;
+            background: radial-gradient(circle, rgba(34, 211, 238, 0.18), transparent 70%);
+        }
+
+        /* NAV */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 48px;
+            background: rgba(8, 8, 16, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .nav-logo svg {
+            width: 36px;
+            height: 36px;
+        }
+
+        .nav-logo-text {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 18px;
+            font-weight: 900;
+            letter-spacing: 3px;
+            background: linear-gradient(135deg, #fff 0%, #a5f3fc 50%, #c7d2fe 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            transition: color .2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--text);
+        }
+
+        .nav-cta {
+            background: linear-gradient(135deg, var(--indigo), var(--violet));
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            padding: 10px 24px;
+            border-radius: 10px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: all .3s;
+            box-shadow: 0 4px 20px rgba(99, 102, 241, 0.3);
+            text-decoration: none;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(99, 102, 241, 0.45);
+        }
+
+        /* HERO */
+        .hero {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 140px 24px 100px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(99, 102, 241, 0.12);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: 100px;
+            padding: 6px 16px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            color: #a5b4fc;
+            margin-bottom: 32px;
+        }
+
+        .hero-badge span {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #6366f1;
+            box-shadow: 0 0 8px #6366f1;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1
+            }
+
+            50% {
+                opacity: .4
+            }
+        }
+
+        .hero h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(42px, 7vw, 88px);
+            font-weight: 900;
+            letter-spacing: 6px;
+            line-height: 1.05;
+            background: linear-gradient(135deg, #fff 0%, #a5f3fc 50%, #c7d2fe 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 24px;
+        }
+
+        .hero-sub {
+            font-size: clamp(16px, 2vw, 20px);
+            color: var(--muted);
+            max-width: 680px;
+            margin: 0 auto 48px;
+            line-height: 1.7;
+            font-weight: 400;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-hero-primary {
+            background: linear-gradient(135deg, var(--indigo), var(--violet));
+            color: #fff;
+            padding: 16px 36px;
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-decoration: none;
+            transition: all .3s;
+            box-shadow: 0 4px 24px rgba(99, 102, 241, 0.35);
+        }
+
+        .btn-hero-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 36px rgba(99, 102, 241, 0.5);
+        }
+
+        .btn-hero-secondary {
+            background: transparent;
+            color: var(--text);
+            border: 1px solid var(--border);
+            padding: 16px 36px;
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-decoration: none;
+            transition: all .3s;
+        }
+
+        .btn-hero-secondary:hover {
+            border-color: var(--cyan);
+            background: rgba(34, 211, 238, 0.06);
+        }
+
+        /* LOGO HERO ICON */
+        .hero-icon {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 48px;
+            animation: float 4s ease-in-out infinite;
+            filter: drop-shadow(0 0 40px rgba(99, 102, 241, 0.5));
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-12px);
+            }
+        }
+
+        /* STATS */
+        .stats {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            flex-wrap: wrap;
+            padding: 60px 24px;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-num {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 40px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #fff 0%, #a5f3fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            color: var(--muted);
+            font-size: 13px;
+            letter-spacing: 2px;
+            margin-top: 6px;
+        }
+
+        /* SECTION WRAPPER */
+        section {
+            position: relative;
+            z-index: 1;
+            padding: 100px 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-tag {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            color: var(--indigo);
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            padding: 5px 14px;
+            border-radius: 100px;
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(28px, 4vw, 44px);
+            font-weight: 900;
+            letter-spacing: 2px;
+            margin-bottom: 16px;
+            color: #fff;
+        }
+
+        .section-sub {
+            color: var(--muted);
+            font-size: 17px;
+            max-width: 560px;
+            line-height: 1.7;
+            margin-bottom: 60px;
+        }
+
+        /* FEATURE GRID */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .feature-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 36px;
+            transition: all .4s cubic-bezier(.4, 0, .2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.5), transparent);
+            opacity: 0;
+            transition: opacity .4s;
+        }
+
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+
+        .feature-card:hover {
+            border-color: rgba(99, 102, 241, 0.35);
+            transform: translateY(-6px);
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.3), 0 0 60px rgba(99, 102, 241, 0.08);
+        }
+
+        .feature-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .feature-card p {
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        /* ARCHITECTURE PIPELINE */
+        .pipeline {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .pipeline-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 28px;
+            transition: all .3s;
+        }
+
+        .pipeline-step:hover {
+            border-color: rgba(99, 102, 241, 0.3);
+            background: var(--card2);
+        }
+
+        .pipeline-num {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 13px;
+            font-weight: 900;
+            letter-spacing: 1px;
+            color: var(--indigo);
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .pipeline-content h4 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .pipeline-content p {
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        /* TECH STACK */
+        .tech-stack {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .tech-tag {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 10px 18px;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: .5px;
+            transition: all .3s;
+        }
+
+        .tech-tag:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        .tech-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+
+        /* DOWNLOAD CARD */
+        .download-card {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.12), rgba(139, 92, 246, 0.08));
+            border: 1px solid rgba(99, 102, 241, 0.25);
+            border-radius: 24px;
+            padding: 64px;
+            text-align: center;
+        }
+
+        .download-card h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 32px;
+            font-weight: 900;
+            letter-spacing: 2px;
+            margin-bottom: 16px;
+        }
+
+        .download-card p {
+            color: var(--muted);
+            font-size: 16px;
+            margin-bottom: 40px;
+        }
+
+        .download-btns {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn-dl {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 30px;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-decoration: none;
+            transition: all .3s;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-dl-primary {
+            background: linear-gradient(135deg, var(--indigo), var(--violet));
+            color: #fff;
+            box-shadow: 0 4px 20px rgba(99, 102, 241, 0.3);
+        }
+
+        .btn-dl-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(99, 102, 241, 0.4);
+        }
+
+        .btn-dl-secondary {
+            background: transparent;
+            color: var(--text);
+            border: 1px solid var(--border);
+        }
+
+        .btn-dl-secondary:hover {
+            border-color: var(--cyan);
+        }
+
+        /* FOOTER */
+        footer {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 60px 24px;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-logo {
+            margin-bottom: 24px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            flex-wrap: wrap;
+            margin-bottom: 32px;
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 13px;
+            transition: color .2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--text);
+        }
+
+        .footer-copy {
+            color: var(--muted);
+            font-size: 12px;
+            letter-spacing: 1px;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            nav {
+                padding: 16px 24px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .stats {
+                gap: 30px;
+            }
+
+            .download-card {
+                padding: 40px 24px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="glow glow-1"></div>
+    <div class="glow glow-2"></div>
+
+    <!-- NAV -->
+    <nav>
+        <a href="#" class="nav-logo">
+            <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="ng" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#6366f1" />
+                        <stop offset="50%" stop-color="#8b5cf6" />
+                        <stop offset="100%" stop-color="#22d3ee" />
+                    </linearGradient>
+                </defs>
+                <polygon points="19,2 45,2 62,19 62,45 45,62 19,62 2,45 2,19" fill="url(#ng)" />
+                <text x="32" y="44" text-anchor="middle" font-family="Arial Black,sans-serif" font-size="28"
+                    font-weight="900" fill="white">Z</text>
+            </svg>
+            <span class="nav-logo-text">ZYNTA</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="#features">Features</a></li>
+            <li><a href="#architecture">Architecture</a></li>
+            <li><a href="#stack">Stack</a></li>
+            <li><a href="#download">Download</a></li>
+        </ul>
+        <a href="https://github.com/webspoilt/god-level-ide" target="_blank" class="nav-cta">View on GitHub</a>
+    </nav>
+
+    <!-- HERO -->
+    <div class="hero">
+        <div class="hero-badge"><span></span>BETA • OPEN SOURCE</div>
+
+        <svg class="hero-icon" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <linearGradient id="hg" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#6366f1" />
+                    <stop offset="50%" stop-color="#8b5cf6" />
+                    <stop offset="100%" stop-color="#22d3ee" />
+                </linearGradient>
+                <filter id="glow">
+                    <feGaussianBlur stdDeviation="3" result="coloredBlur" />
+                    <feMerge>
+                        <feMergeNode in="coloredBlur" />
+                        <feMergeNode in="SourceGraphic" />
+                    </feMerge>
+                </filter>
+            </defs>
+            <polygon points="36,4 84,4 116,36 116,84 84,116 36,116 4,84 4,36" fill="url(#hg)" filter="url(#glow)" />
+            <text x="60" y="82" text-anchor="middle" font-family="Arial Black,sans-serif" font-size="58"
+                font-weight="900" fill="white">Z</text>
+        </svg>
+
+        <h1>ZYNTA<br />STUDIO</h1>
+        <p class="hero-sub">
+            The next-generation multi-agent powered Intelligent Development Environment.
+            It doesn't just help you code — it <strong>codes alongside you</strong>.
+        </p>
+        <div class="hero-btns">
+            <a href="#download" class="btn-hero-primary">⬇ Download .exe</a>
+            <a href="https://github.com/webspoilt/god-level-ide" target="_blank" class="btn-hero-secondary">★ GitHub
+                Repo</a>
+        </div>
+    </div>
+
+    <!-- STATS -->
+    <div class="stats">
+        <div class="stat">
+            <div class="stat-num">7</div>
+            <div class="stat-label">PHASES</div>
+        </div>
+        <div class="stat">
+            <div class="stat-num">Rust</div>
+            <div class="stat-label">BACKEND</div>
+        </div>
+        <div class="stat">
+            <div class="stat-num">MCP</div>
+            <div class="stat-label">PROTOCOL</div>
+        </div>
+        <div class="stat">
+            <div class="stat-num">GPL-3</div>
+            <div class="stat-label">LICENSE</div>
+        </div>
+        <div class="stat">
+            <div class="stat-num">∞</div>
+            <div class="stat-label">AGENTS</div>
+        </div>
+    </div>
+
+    <!-- FEATURES -->
+    <section id="features">
+        <div class="section-tag">CAPABILITIES</div>
+        <h2 class="section-title">Built Different.</h2>
+        <p class="section-sub">Every layer of Zynta Studio is engineered for the agentic AI era.</p>
+
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon" style="background:rgba(99,102,241,0.15)">💾</div>
+                <h3>Transactional VFS</h3>
+                <p>Atomic file operations with idempotency verification. Built-in transaction managers with
+                    time-traveling, snapshot-based Undo/Redo.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon" style="background:rgba(139,92,246,0.15)">📡</div>
+                <h3>MCP Infrastructure</h3>
+                <p>Enterprise-grade observability via Model Context Protocol. Continuous telemetry, execution latency,
+                    and AI hallucination rate tracking.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon" style="background:rgba(34,211,238,0.12)">🤖</div>
+                <h3>SEMAP Orchestration</h3>
+                <p>Software Engineering Multi-Agent Protocol. Actor-model architecture mapping specialized agents to
+                    Frontend, Backend, and DevOps roles.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon" style="background:rgba(99,102,241,0.15)">⚖️</div>
+                <h3>Agent Exchange (AEX)</h3>
+                <p>Combinatorial Auctioning Engine. Distributes workloads to agents based on token capacity, context
+                    alignment, and operational cost.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon" style="background:rgba(139,92,246,0.15)">🎨</div>
+                <h3>Generative Visual UI</h3>
+                <p>Real-time dynamic execution graphs via VisualLogicTree. Watch agentic pathways form as code is
+                    generated live.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon" style="background:rgba(34,211,238,0.12)">🛡️</div>
+                <h3>Red-Teaming Engine</h3>
+                <p>Adversarial RedTeamAgents launch continuous jailbreaks countered by BlueTeam live-patching.
+                    Kubernetes self-healing CI/CD.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ARCHITECTURE -->
+    <section id="architecture" style="border-top:1px solid var(--border); padding-top:100px;">
+        <div class="section-tag">ARCHITECTURE</div>
+        <h2 class="section-title">7-Phase Blueprint</h2>
+        <p class="section-sub">Synthesized from Kimi, Minimax, GLM-5, and Deepseek's best architectural designs.</p>
+
+        <div class="pipeline">
+            <div class="pipeline-step">
+                <div class="pipeline-num">01</div>
+                <div class="pipeline-content">
+                    <h4>Transactional Virtual File System</h4>
+                    <p>Atomic operations, idempotency, time-travel snapshots, and Undo/Redo with full transaction
+                        isolation.</p>
+                </div>
+            </div>
+            <div class="pipeline-step">
+                <div class="pipeline-num">02</div>
+                <div class="pipeline-content">
+                    <h4>MCP Telemetry Infrastructure</h4>
+                    <p>OAuth2 auth, Prometheus metrics exporter, KPI collector tracking task success, latency, and
+                        hallucination rates.</p>
+                </div>
+            </div>
+            <div class="pipeline-step">
+                <div class="pipeline-num">03</div>
+                <div class="pipeline-content">
+                    <h4>SEMAP Multi-Agent Orchestration</h4>
+                    <p>Actor-model agents with shared knowledge bases, debate-based consensus, and protocol-level
+                        message contracts.</p>
+                </div>
+            </div>
+            <div class="pipeline-step">
+                <div class="pipeline-num">04</div>
+                <div class="pipeline-content">
+                    <h4>Agent Exchange Auctioning</h4>
+                    <p>Combinatorial auction engine matching tasks to agents by capacity, cost, and context fit through
+                        bidding.</p>
+                </div>
+            </div>
+            <div class="pipeline-step">
+                <div class="pipeline-num">05</div>
+                <div class="pipeline-content">
+                    <h4>Generative UI Renderer</h4>
+                    <p>Visual logic tree rendering in React + Tauri. Real-time agent pathway visualization via Tauri IPC
+                        commands.</p>
+                </div>
+            </div>
+            <div class="pipeline-step">
+                <div class="pipeline-num">06</div>
+                <div class="pipeline-content">
+                    <h4>Red / Blue Team Security</h4>
+                    <p>Adversarial attacker agents generate exploits. Defender agents respond with live patches from a
+                        shared knowledge base.</p>
+                </div>
+            </div>
+            <div class="pipeline-step">
+                <div class="pipeline-num">07</div>
+                <div class="pipeline-content">
+                    <h4>Kubernetes CI/CD Self-Healing</h4>
+                    <p>HPA, ingress, canary deployments, and namespace isolation. Application auto-scales and self-heals
+                        under load.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TECH STACK -->
+    <section id="stack" style="border-top:1px solid var(--border); padding-top:100px;">
+        <div class="section-tag">TECH STACK</div>
+        <h2 class="section-title">Built on the Best.</h2>
+        <p class="section-sub">Every technology chosen for performance, safety, and future-proof design.</p>
+        <div class="tech-stack">
+            <div class="tech-tag"><span class="tech-dot" style="background:#f74c00"></span>Rust</div>
+            <div class="tech-tag"><span class="tech-dot" style="background:#61dafb"></span>React</div>
+            <div class="tech-tag"><span class="tech-dot" style="background:#6366f1"></span>Tauri v2</div>
+            <div class="tech-tag"><span class="tech-dot" style="background:#f7df1e"></span>TypeScript</div>
+            <div class="tech-tag"><span class="tech-dot" style="background:#646cff"></span>Vite</div>
+            <div class="tech-tag"><span class="tech-dot" style="background:#326ce5"></span>Kubernetes</div>
+            <div class="tech-tag"><span class="tech-dot" style="background:#e6522c"></span>Prometheus</div>
+            <div class="tech-tag"><span class="tech-dot" style="background:#22d3ee"></span>MCP Protocol</div>
+            <div class="tech-tag"><span class="tech-dot" style="background:#8b5cf6"></span>Tokio Async</div>
+            <div class="tech-tag"><span class="tech-dot" style="background:#f97316"></span>Serde / JSON</div>
+        </div>
+    </section>
+
+    <!-- DOWNLOAD -->
+    <section id="download" style="border-top:1px solid var(--border); padding-top:100px;">
+        <div class="download-card">
+            <h2>Get Zynta Studio</h2>
+            <p>Download the native Windows executable or clone the source to build your own.</p>
+            <div class="download-btns">
+                <a href="https://github.com/webspoilt/god-level-ide/releases" target="_blank"
+                    class="btn-dl btn-dl-primary">
+                    ⬇ Download for Windows
+                </a>
+                <a href="https://github.com/webspoilt/god-level-ide" target="_blank" class="btn-dl btn-dl-secondary">
+                    ★ View Source on GitHub
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-logo">
+            <svg width="48" height="48" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="fg" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#6366f1" />
+                        <stop offset="100%" stop-color="#22d3ee" />
+                    </linearGradient>
+                </defs>
+                <polygon points="19,2 45,2 62,19 62,45 45,62 19,62 2,45 2,19" fill="url(#fg)" opacity="0.8" />
+                <text x="32" y="44" text-anchor="middle" font-family="Arial Black,sans-serif" font-size="28"
+                    font-weight="900" fill="white">Z</text>
+            </svg>
+        </div>
+        <ul class="footer-links">
+            <li><a href="https://github.com/webspoilt/god-level-ide" target="_blank">GitHub</a></li>
+            <li><a href="https://x.com/Gh0st_118" target="_blank">X / Twitter</a></li>
+            <li><a href="https://www.linkedin.com/in/webspoilt/" target="_blank">LinkedIn</a></li>
+            <li><a href="mailto:heyzerodayhere@gmail.com">Email</a></li>
+        </ul>
+        <p class="footer-copy">© 2026 Zynta Studio · GPL-3.0 License · Built by Zeroday</p>
+    </footer>
+</body>
+
+</html>
