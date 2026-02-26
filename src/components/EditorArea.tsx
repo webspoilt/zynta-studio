@@ -1,4 +1,4 @@
-import { Sparkles, X, Play, Check, FileCode2, Network, GitPullRequestDraft, Lock, GraduationCap, Lightbulb, Shield, Zap } from 'lucide-react';
+import { Sparkles, X, Play, Check, FileCode2, Network, GitPullRequestDraft, Lock, GraduationCap, Lightbulb, Zap } from 'lucide-react';
 import { useState } from 'react';
 import { RunnerPanel } from './RunnerPanel';
 

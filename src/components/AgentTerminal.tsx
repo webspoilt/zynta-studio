@@ -1,4 +1,4 @@
-import { Terminal, Activity, Cpu, AlertTriangle, Check, X, Smartphone, History, Play, FastForward, Rewind, Shield, Zap } from 'lucide-react';
+import { Terminal, Activity, Cpu, AlertTriangle, Check, X, Smartphone, History, Play, FastForward, Rewind } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
 export function AgentTerminal() {
