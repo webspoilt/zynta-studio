@@ -32,6 +32,15 @@
 
 ---
 
+> [!WARNING]
+> **🚨 EXPERIMENTAL & BETA SOFTWARE**
+> 
+> This system is an actively evolving Agentic IDE.
+> - **Action Warning:** Zynta Studio acts as an active DevOps Agent. It will execute Native Terminal commands, compile code, and run UI tests automatically based on your instructions.
+> - **Liability:** Use Zynta Studio at your own risk. Do not expose production secrets in your working directory.
+
+---
+
 ## 🤔 The Problem
 Traditional IDEs are passive tools. You write code, you debug, you search for solutions online. Even with AI copilots, the burden of architecture and complex logic remains on the developer. Context windows are limited, and AI often breaks existing code.
 
@@ -108,11 +117,45 @@ Traditional IDEs are passive tools. You write code, you debug, you search for so
   </tr>
 </table>
 
+## 🌐 Real-World Use Cases
+Wondering what you can actually build with an autonomous frontend orchestrator? 
+Check out our **[Real-World Use Cases](USE_CASES.md)** document to see how engineers are using Zynta Studio for:
+- 🎯 The One-Click End-to-End Test (QA Automation)
+- 📱 Autonomous Mobile App Compilation
+- 🎨 Rapid Prototyping & Generative UI
+
+---
+
+## 🏗️ Architecture Blueprint
+
+```text
+┌─────────────────────────────────────────────────────────────┐
+│                    ZYNTA STUDIO IDE                         │
+├─────────────────────────────────────────────────────────────┤
+│  ┌─────────────┐    ┌─────────────┐    ┌─────────────┐      │
+│  │ Editor Area │    │ Composer AI │    │ Live Preview│      │
+│  │ (Monaco)    │◄──►│ (In-Line)   │◄──►│ (Artifacts) │      │
+│  └──────┬──────┘    └─────────────┘    └─────────────┘      │
+│         │                                                   │
+└─────────┼───────────────────────────────────────────────────┘
+          ▼
+┌─────────────────────────────────────────────────────────────┐
+│                 AGENTIC TERMINAL BACKEND                    │
+├─────────────────────────────────────────────────────────────┤
+│  ┌─────────────┐  ┌───────────────┐  ┌───────────────┐      │
+│  │Zynta Runner │  │ RedTeam Agent │  │Terminal Output│      │
+│  │(Playwright) │  │ (Dependency)  │  │(Listener GUI) │      │
+│  └─────────────┘  └───────────────┘  └───────────────┘      │
+└─────────────────────────────────────────────────────────────┘
+```
+
 ---
 
 <div align="center">
   <h2>🚀 Quick Start & Installation</h2>
 </div>
+
+> **🍼 DEPLOYING TO DESKTOP?** Read our **[Detailed Deployment Guide](DEPLOYMENT_GUIDE.md)** for a complete step-by-step walkthrough on compiling Zynta Studio into a lightning-fast native Windows executable using Tauri!
 
 Get Zynta Studio running locally on your machine.
 
