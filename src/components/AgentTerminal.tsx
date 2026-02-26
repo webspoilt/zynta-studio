@@ -18,7 +18,13 @@ export function AgentTerminal() {
             '[SYSTEM] Awaiting user approval for generated changes...',
             '',
             '> python build_script.py',
-            'command not found: python'
+            'command not found: python',
+            '[AUTO-FIX] Intercepting critical build failure...',
+            '[AUTO-FIX] Analyzing stack trace: Missing Python interpreter.',
+            '[AUTO-FIX] Generating cross-platform installation script.',
+            '[AUTO-FIX] Retrying command...',
+            '> python build_script.py',
+            'Compilation successful. 0 errors, 0 warnings.'
         ];
 
         let current = 0;
@@ -50,6 +56,10 @@ export function AgentTerminal() {
                 <div style={{ display: 'flex', alignItems: 'center', gap: '6px', cursor: 'pointer' }}>
                     <Cpu size={14} /> Agents (1 Active)
                 </div>
+                {/* Shadow Agents Echo Chamber Status */}
+                <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: 'var(--violet)' }}>
+                    <Activity size={14} /> Shadow Agents: Reviewing security...
+                </div>
                 <div style={{ flex: 1 }} />
                 <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#10b981' }}>
                     <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#10b981', boxShadow: '0 0 10px #10b981' }} />
@@ -65,8 +75,10 @@ export function AgentTerminal() {
                     if (log.includes('[AGENT_')) color = '#a78bfa';
                     if (log.includes('[RedTeam]')) color = '#f43f5e';
                     if (log.includes('[VFS]')) color = '#fbbf24';
+                    if (log.includes('[AUTO-FIX]')) color = '#10b981'; // Green for the self-healing loop
                     if (log.startsWith('>')) color = 'white';
                     if (log.includes('command not found')) color = '#ef4444';
+                    if (log.includes('Compilation successful')) color = 'white';
 
                     return (
                         <div key={i} style={{ marginBottom: '4px', color }}>
@@ -77,9 +89,10 @@ export function AgentTerminal() {
                             )}
                             {log}
                         </div>
-                    )
+                    );
                 })}
-                {logs.length === 11 && (
+                {/* 11 original logs + 6 auto-fix logs = 17 total */}
+                {logs.length === 17 && (
                     <div style={{ marginTop: '8px', display: 'flex', gap: '8px' }}>
                         <span style={{ color: '#10b981' }}>❯</span>
                         <span style={{ color: 'white', animation: 'blink 1s infinite' }}>_</span>

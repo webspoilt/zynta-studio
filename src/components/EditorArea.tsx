@@ -1,4 +1,4 @@
-import { Sparkles, X, Play, Check, FileCode2 } from 'lucide-react';
+import { Sparkles, X, Play, Check, FileCode2, Network, GitPullRequestDraft } from 'lucide-react';
 import { useState } from 'react';
 import { RunnerPanel } from './RunnerPanel';
 
@@ -8,13 +8,24 @@ export function EditorArea() {
     return (
         <div className="ide-panel" style={{ position: 'relative', borderRight: 'none', borderLeft: 'none' }}>
             {/* Editor Tabs */}
-            <div style={{ display: 'flex', borderBottom: '1px solid var(--border-color)', background: 'var(--bg-dark)' }}>
-                <div style={{ padding: '8px 16px', background: 'var(--bg-panel)', borderRight: '1px solid var(--border-color)', borderTop: '2px solid var(--accent)', fontSize: '13px', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    App.tsx
-                    <button style={{ background: 'none', border: 'none', color: 'var(--text-muted)', cursor: 'pointer' }}>
-                        <X size={12} />
-                    </button>
+            <div style={{ display: 'flex', borderBottom: '1px solid var(--border-color)', background: 'var(--bg-dark)', justifyContent: 'space-between', alignItems: 'center', paddingRight: '16px' }}>
+                <div style={{ display: 'flex' }}>
+                    <div style={{ padding: '8px 16px', background: 'var(--bg-panel)', borderRight: '1px solid var(--border-color)', borderTop: '2px solid var(--accent)', fontSize: '13px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                        <FileCode2 size={14} color="var(--accent)" /> App.tsx
+                        <button style={{ background: 'none', border: 'none', color: 'var(--text-muted)', cursor: 'pointer' }}>
+                            <X size={12} />
+                        </button>
+                    </div>
+                    <div style={{ padding: '8px 16px', borderRight: '1px solid var(--border-color)', borderTop: '2px solid transparent', fontSize: '13px', display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--text-muted)', cursor: 'pointer' }}>
+                        <Network size={14} /> Architecture Vis
+                    </div>
                 </div>
+
+                {/* Audit Diff Tool Action */}
+                <button style={{ display: 'flex', alignItems: 'center', gap: '6px', background: 'rgba(99, 102, 241, 0.1)', border: '1px solid rgba(99, 102, 241, 0.3)', color: 'var(--accent)', padding: '4px 12px', borderRadius: '4px', fontSize: '12px', fontWeight: 600, cursor: 'pointer' }}>
+                    <GitPullRequestDraft size={14} />
+                    Review Diff
+                </button>
             </div>
 
             {/* Runner Config Block inserted here */}

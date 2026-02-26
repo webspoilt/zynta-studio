@@ -16,8 +16,8 @@
     <a href="https://github.com/webspoilt/god-level-ide/pulls"><img src="https://img.shields.io/github/issues-pr/webspoilt/god-level-ide?style=for-the-badge&color=green" alt="Pull Requests"></a>
     <br/>
     <!-- Tech & Status Badges -->
-    <a href="https://github.com/webspoilt/god-level-ide/blob/master/LICENSE"><img src="https://img.shields.io/badge/License-GPL_3.0-blue.svg?style=for-the-badge&logo=gnu" alt="GPLv3 License"></a>
-    <img src="https://img.shields.io/badge/Status-Beta-success?style=for-the-badge" alt="Status">
+    <a href="https://github.com/webspoilt/zynta-studio/blob/master/LICENSE"><img src="https://img.shields.io/badge/License-GPL_3.0-blue.svg?style=for-the-badge&logo=gnu" alt="GPLv3 License"></a>
+    <img src="https://img.shields.io/badge/Status-v2.5.0-success?style=for-the-badge" alt="Status">
     <img src="https://img.shields.io/badge/Built_With-Rust_&_React-orange?style=for-the-badge&logo=rust" alt="Tech">
     <br/>
     <!-- Social Badges -->
@@ -117,6 +117,13 @@ Traditional IDEs are passive tools. You write code, you debug, you search for so
   </tr>
 </table>
 
+## ✨ Advanced AI Features (v2.5)
+Zynta Studio `v2.5.0` introduces hyper-advanced semantic and orchestration tools inspired by top-tier agent frameworks like OmniClaw:
+- **🗺️ Context Mapper (Living Docs):** Real-time AST architecture visualization directly inside the editor tab. View your code as a living, dynamic flowchart instead of just syntax.
+- **⚖️ Audit Diff:** Atomic multi-file edit reviews. Ensure the Swarm agents don't break production by safely reviewing exact AST-diffs before applying them.
+- **🔄 Autonomous Fix Loop:** Zero-intervention self-healing. When a build fails in the terminal, the `DevOpsAgent` automatically catches the exception, parses the stack trace, writes a fix, and retries compilation without human input.
+- **👻 Shadow Agents:** Echo Chambers run entirely in the background, silently monitoring your active code for security vulnerabilities (Red Teaming) without cluttering the UI.
+
 ## 🌐 Real-World Use Cases
 Wondering what you can actually build with an autonomous frontend orchestrator? 
 Check out our **[Real-World Use Cases](USE_CASES.md)** document to see how engineers are using Zynta Studio for:
@@ -165,8 +172,8 @@ Get Zynta Studio running locally on your machine.
 
 **1. Clone the repository**
 ```bash
-git clone https://github.com/webspoilt/god-level-ide.git
-cd god-level-ide
+git clone https://github.com/webspoilt/zynta-studio.git
+cd zynta-studio
 ```
 
 **2. Install Dependencies**
