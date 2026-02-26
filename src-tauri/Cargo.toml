@@ -1,6 +1,6 @@
 [package]
 name = "zynta-studio"
-version = "0.1.0"
+version = "5.0.0"
 edition = "2021"
 rust-version = "1.75"
 
@@ -27,6 +27,8 @@ metrics-exporter-prometheus = "0.12"
 async-trait = "0.1"
 jsonwebtoken = "9.0"
 rand = "0.8"
+regex = "1.10"
+lazy_static = "1.4"
 
 [target.'cfg(not(any(target_os = "android", target_os = "ios")))'.dependencies]
 notify = "6.0"

@@ -1,23 +1,23 @@
 <div align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:0f0f1a,100:6d28d9&height=300&section=header&text=Zynta%20Studio&fontSize=90&fontColor=ffffff&animation=fadeIn&fontAlignY=38&desc=Next-Gen%20Agentic%20Development%20Environment&descAlignY=51&descAlign=62" alt="Zynta Studio Header" />
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:0f0f1a,100:6d28d9&height=300&section=header&text=Zynta%20Studio&fontSize=90&fontColor=ffffff&animation=fadeIn&fontAlignY=38&desc=Sovereign%20AI%20Development%20Environment&descAlignY=51&descAlign=62" alt="Zynta Studio Header" />
   <br/><br/>
   <img src="public/logo-full.svg" alt="Zynta Studio Logo" height="80" />
 
   <h2>🌌 Crafted with ❤️ by <a href="https://x.com/Gh0st_118" target="_blank">Zeroday</a></h2>
   <p>
-    <em>A groundbreaking, multi-agent powered Intelligent Development Environment. It doesn't just help you code—it <b>codes alongside you</b>.</em>
+    <em>A next-gen, multi-agent powered <b>Sovereign AI IDE</b>. It doesn't just help you code — it <b>codes alongside you</b>, entirely on your local hardware.</em>
   </p>
 
   <p>
     <!-- Github Badges -->
-    <a href="https://github.com/webspoilt/god-level-ide/stargazers"><img src="https://img.shields.io/github/stars/webspoilt/god-level-ide?style=for-the-badge&color=yellow" alt="Stars"></a>
-    <a href="https://github.com/webspoilt/god-level-ide/network/members"><img src="https://img.shields.io/github/forks/webspoilt/god-level-ide?style=for-the-badge&color=blue" alt="Forks"></a>
-    <a href="https://github.com/webspoilt/god-level-ide/issues"><img src="https://img.shields.io/github/issues/webspoilt/god-level-ide?style=for-the-badge&color=red" alt="Issues"></a>
-    <a href="https://github.com/webspoilt/god-level-ide/pulls"><img src="https://img.shields.io/github/issues-pr/webspoilt/god-level-ide?style=for-the-badge&color=green" alt="Pull Requests"></a>
+    <a href="https://github.com/webspoilt/zynta-studio/stargazers"><img src="https://img.shields.io/github/stars/webspoilt/zynta-studio?style=for-the-badge&color=yellow" alt="Stars"></a>
+    <a href="https://github.com/webspoilt/zynta-studio/network/members"><img src="https://img.shields.io/github/forks/webspoilt/zynta-studio?style=for-the-badge&color=blue" alt="Forks"></a>
+    <a href="https://github.com/webspoilt/zynta-studio/issues"><img src="https://img.shields.io/github/issues/webspoilt/zynta-studio?style=for-the-badge&color=red" alt="Issues"></a>
+    <a href="https://github.com/webspoilt/zynta-studio/pulls"><img src="https://img.shields.io/github/issues-pr/webspoilt/zynta-studio?style=for-the-badge&color=green" alt="Pull Requests"></a>
     <br/>
     <!-- Tech & Status Badges -->
     <a href="https://github.com/webspoilt/zynta-studio/blob/master/LICENSE"><img src="https://img.shields.io/badge/License-GPL_3.0-blue.svg?style=for-the-badge&logo=gnu" alt="GPLv3 License"></a>
-    <img src="https://img.shields.io/badge/Status-v2.5.0-success?style=for-the-badge" alt="Status">
+    <img src="https://img.shields.io/badge/Status-v5.0.0-success?style=for-the-badge" alt="Status">
     <img src="https://img.shields.io/badge/Built_With-Rust_&_React-orange?style=for-the-badge&logo=rust" alt="Tech">
     <br/>
     <!-- Social Badges -->
@@ -28,7 +28,7 @@
 
 <br />
 
-> **Zynta Studio** integrates cutting-edge concepts from generative AI, decentralized agent orchestration, and atomic virtual file systems. Based on a unified blueprint synthesizing the best architectural designs from **Kimi, Minimax, GLM-5, and Deepseek**.
+> **Zynta Studio** is a full-stack, AI-powered development environment built from scratch with Rust & React. It integrates generative AI, decentralized agent orchestration, cryptographic code provenance, neural time-travel debugging, and an atomic virtual file system — all running **100% locally** with zero cloud dependency.
 
 ---
 
@@ -36,21 +36,22 @@
 > **🚨 EXPERIMENTAL & BETA SOFTWARE**
 > 
 > This system is an actively evolving Agentic IDE.
-> - **Action Warning:** Zynta Studio acts as an active DevOps Agent. It will execute Native Terminal commands, compile code, and run UI tests automatically based on your instructions.
+> - **Action Warning:** Zynta Studio acts as an active DevOps Agent. It will execute Native Terminal commands, compile code, and run UI tests automatically.
+> - **Zero-Egress Mode:** In Sovereign mode, absolutely zero data leaves your machine. All AI runs on local Ollama.
 > - **Liability:** Use Zynta Studio at your own risk. Do not expose production secrets in your working directory.
 
 ---
 
 ## 🤔 The Problem
-Traditional IDEs are passive tools. You write code, you debug, you search for solutions online. Even with AI copilots, the burden of architecture and complex logic remains on the developer. Context windows are limited, and AI often breaks existing code.
+Traditional IDEs are passive tools. Even with AI copilots, the burden of architecture, debugging, and deployment remains on the developer. Context windows are limited, AI often breaks existing code, and your intellectual property gets sent to cloud servers you don't control.
 
 ## 💡 The Solution
-**Zynta Studio** is an active participant in your development process. It uses a **Software Engineering Multi-Agent Protocol (SEMAP)** where specialized agents (Frontend, Backend, DevOps) collaborate, debate, and write code entirely locally. 
+**Zynta Studio v5.0** is an active participant in your development process. It uses a **Software Engineering Multi-Agent Protocol (SEMAP)** where specialized agents collaborate, debate, and write code entirely locally. It proves who wrote every line of code via a **blockchain provenance ledger**, and lets you **time-travel** through your application state to catch bugs before they happen.
 
 ---
 
 ## 📸 See It In Action
-*(Replace this placeholder with an awesome GIF or video showing Zynta Studio auto-generating code!)*
+*(Replace this placeholder with a GIF or video showing Zynta Studio in action)*
 <div align="center">
   <img src="https://via.placeholder.com/800x450.png?text=Showcase+GIF+or+Demo+Video+Here" alt="Zynta Studio Demo">
 </div>
@@ -58,102 +59,161 @@ Traditional IDEs are passive tools. You write code, you debug, you search for so
 ---
 
 <div align="center">
-  <h2>🌟 Core Architecture & Capabilities</h2>
+  <h2>🔥 What's New in v5.0 — Sovereign AI Release</h2>
+</div>
+
+### ⚡ Dark Glassmorphism UI
+The entire interface has been **completely redesigned** with a premium 2026 aesthetic:
+- **Animated nebula background** with shifting radial gradients
+- **Frosted glass panels** — `backdrop-filter: blur(20px)` on every surface
+- **Agent glow trails** — neon accent scanning lines being analyzed by AI
+- **Glass buttons** with hover lift, gradient accents, and spring physics
+- **Status dot pulses** — live heartbeat indicators for agents and systems
+
+### 🧠 SEMAP Actor System (Rust)
+Three specialized AI agents that understand your domain:
+- **FrontendAgent** — Analyzes UI, component architecture, accessibility
+- **BackendAgent** — Reviews API design, database schemas, security
+- **DevOpsAgent** — Manages CI/CD, Docker, infrastructure as code
+- Each agent has an autonomous **auto-fix loop** for error remediation
+
+### 🌳 True AST Parsing
+Native Rust parser (tree-sitter integration ready) that:
+- Extracts functions, classes, imports from any file
+- Generates live **Mermaid flowcharts** in the "Architecture Vis" tab
+- Updates in real-time as you type
+
+### 🔗 Native Git Orchestration
+No more `git` CLI fumbling. Full native integration:
+- `git clone` / `commit` / `pull` / `push` / `status` / `log`
+- Repository info panel in the sidebar
+- Remote tracking and diff visualization
+
+### ⏰ Neural Time Travel Debugger
+Scrub through your application's execution timeline:
+- **Ring-buffer state recorder** capturing variable snapshots
+- **Automatic drift detection** — AI spots when variables mutated unexpectedly
+- Visual **gradient scrub bar** with drift markers
+- Split-pane **memory snapshot** + **AI drift analysis**
+
+### 🔒 Code Provenance Blockchain
+Append-only SHA-256 chain that cryptographically proves:
+- **`[USER-AUTH]`** — Every line you personally wrote
+- **`[ZYNTA-GEN]`** — Every line the AI generated
+- **`[HYBRID]`** — Lines you modified after AI generation
+- Badges visible on every file tab. Chain integrity verifiable at any time.
+
+### 🎮 Gamified Flow State
+- **Flow Mode** — Silences all distractions, shows only the current function
+- **Streaks & Achievements** — "The Bugslayer" (fix 10 bugs), "Clean Coder" (95%+ coverage)
+- **Model Switching** — Fast model (Llama 3 8B, ~80ms) for simple tasks, Heavy model (Claude 3.5, ~2.1s) for architecture
+
+---
+
+<div align="center">
+  <h2>🌟 Full Feature List</h2>
 </div>
 
 <table>
   <tr>
     <td width="50%">
-      <h3>💾 Phase 1: Transactional VFS</h3>
-      <p>Atomic file operations with <b>Idempotency verification</b> tracking. Features built-in <b>Transaction Managers</b> with time-traveling, snapshot-based Undo/Redo logic.</p>
+      <h3>💾 Transactional VFS</h3>
+      <p>Atomic file operations with <b>Idempotency verification</b>. Built-in <b>Transaction Managers</b> with time-traveling, snapshot-based Undo/Redo logic. "Infinite Undo" — rollback 10 files in 50ms.</p>
     </td>
     <td width="50%">
-      <h3>📡 Phase 2: MCP Infrastructure</h3>
-      <p>Enterprise-grade observability hooked into the <b>Model Context Protocol (MCP)</b>. Tracks continuous <b>Telemetry</b>, execution latency, and simulated AI hallucination rates.</p>
+      <h3>📡 MCP Telemetry</h3>
+      <p>Enterprise-grade observability via the <b>Model Context Protocol</b>. Prometheus metrics, KPI tracking, execution latency, and AI hallucination rate monitoring.</p>
     </td>
   </tr>
   <tr>
     <td>
-      <h3>🤖 Phase 3: SEMAP Orchestration</h3>
-      <p><b>Software Engineering Multi-Agent Protocol</b>. Actor-model architecture mapping agents to specialized roles (Frontend, Backend, DevOps). Includes Debate protocols for consensus.</p>
+      <h3>🤖 SEMAP Orchestration</h3>
+      <p><b>Software Engineering Multi-Agent Protocol</b>. Actor-model architecture mapping agents to Frontend, Backend, and DevOps. Includes Debate protocols for consensus.</p>
     </td>
     <td>
-      <h3>⚖️ Phase 4: Agent Exchange (AEX)</h3>
-      <p>Cutting-edge <b>Combinatorial Auctioning Engine</b>. Distributes workloads to agents based on token capacity, context alignment, and operational cost.</p>
+      <h3>⚖️ Agent Exchange (AEX)</h3>
+      <p><b>Combinatorial Auctioning Engine</b>. Distributes workloads to agents based on token capacity, context alignment, and operational cost.</p>
     </td>
   </tr>
   <tr>
     <td>
-      <h3>🎨 Phase 5: Generative Visual UI</h3>
-      <p>Powered by Tauri & React. Renders real-time, dynamic execution graphs (<code>VisualLogicTree</code>) mapping the agentic pathways as code is formed.</p>
+      <h3>✨ Inline Composer (Cursor-Style)</h3>
+      <p>Native floating composer with <b>Socratic Mentor Mode</b>. Get guided hints instead of direct answers. Proprietary file locking prevents AI from seeing sensitive code.</p>
     </td>
-    <td>
-      <h3>✨ In-Line Composer (Cursor-Style)</h3>
-      <p>A native Floating Composer overlaid directly on your code editor for rapid LLM editing instructions.</p>
-    </td>
-  </tr>
-  <tr>
     <td>
       <h3>🖥️ Live Artifacts (Claude-Style)</h3>
-      <p>A real-time split-pane Preview window that renders UI components dynamically as agents generate HTML/React.</p>
-    </td>
-    <td>
-      <h3>🚀 Zynta Runner (Native Automations)</h3>
-      <p>Transforms the IDE into a DevOps orchestrator:<br>
-      • <b>Web (Playwright):</b> Auto-builds and GUI tests endpoints.<br>
-      • <b>Android (ADB/Gradle):</b> Auto-compiles APKs and launches emulators.<br>
-      • <b>Windows (PyInstaller):</b> Auto-packages EXEs and verifies silent installs.</p>
+      <p>Real-time split-pane Preview. Cross-platform rendering for <b>Web</b>, <b>iOS</b>, <b>Android</b>, <b>Linux</b>, and <b>Windows</b> targets with device frame simulation.</p>
     </td>
   </tr>
   <tr>
     <td>
-      <h3>🛡️ Phase 6 & 7: Red-Teaming & CI/CD</h3>
-      <p>Adversarial <b>RedTeamAgents</b> launch continuous jailbreaks countered by <b>BlueTeam</b> live-patching. Fully containerized with <b>Kubernetes Self-Healing</b> deployments.</p>
+      <h3>🛡️ Red/Blue Teaming & CI/CD</h3>
+      <p>Adversarial <b>shadow agents</b> run security scans in the background. Kubernetes self-healing CI/CD with auto-scaling.</p>
     </td>
     <td>
-      <h3>💡 Interactive Terminal Listener</h3>
-      <p>Zynta actively monitors terminal streams. If it spots a missing dependency (e.g. <code>command not found: python</code>), it prompts the user to auto-install it via <code>winget</code> or <code>brew</code>.</p>
+      <h3>💡 Terminal Listener</h3>
+      <p>Monitors execution streams. Intercepts missing dependencies and prompts auto-install via <code>winget</code>/<code>brew</code>. Renders as premium glassmorphism toast.</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <h3>🔒 Zero-Egress Mode</h3>
+      <p>Cuts all external cloud APIs with a single toggle. All AI runs on local <b>Ollama</b>. PII Scanner scrubs context before any fallback.</p>
+    </td>
+    <td>
+      <h3>🚀 Zynta Runner (DevOps)</h3>
+      <p><b>Web:</b> Playwright auto-tests. <b>Android:</b> ADB/Gradle compilation. <b>Windows:</b> PyInstaller EXE packaging. All from one button.</p>
     </td>
   </tr>
 </table>
-
-## ✨ Advanced AI Features (v2.5)
-Zynta Studio `v2.5.0` introduces hyper-advanced semantic and orchestration tools inspired by top-tier agent frameworks like OmniClaw:
-- **🗺️ Context Mapper (Living Docs):** Real-time AST architecture visualization directly inside the editor tab. View your code as a living, dynamic flowchart instead of just syntax.
-- **⚖️ Audit Diff:** Atomic multi-file edit reviews. Ensure the Swarm agents don't break production by safely reviewing exact AST-diffs before applying them.
-- **🔄 Autonomous Fix Loop:** Zero-intervention self-healing. When a build fails in the terminal, the `DevOpsAgent` automatically catches the exception, parses the stack trace, writes a fix, and retries compilation without human input.
-- **👻 Shadow Agents:** Echo Chambers run entirely in the background, silently monitoring your active code for security vulnerabilities (Red Teaming) without cluttering the UI.
-
-## 🌐 Real-World Use Cases
-Wondering what you can actually build with an autonomous frontend orchestrator? 
-Check out our **[Real-World Use Cases](USE_CASES.md)** document to see how engineers are using Zynta Studio for:
-- 🎯 The One-Click End-to-End Test (QA Automation)
-- 📱 Autonomous Mobile App Compilation
-- 🎨 Rapid Prototyping & Generative UI
 
 ---
 
 ## 🏗️ Architecture Blueprint
 
 ```text
-┌─────────────────────────────────────────────────────────────┐
-│                    ZYNTA STUDIO IDE                         │
-├─────────────────────────────────────────────────────────────┤
-│  ┌─────────────┐    ┌─────────────┐    ┌─────────────┐      │
-│  │ Editor Area │    │ Composer AI │    │ Live Preview│      │
-│  │ (Monaco)    │◄──►│ (In-Line)   │◄──►│ (Artifacts) │      │
-│  └──────┬──────┘    └─────────────┘    └─────────────┘      │
-│         │                                                   │
-└─────────┼───────────────────────────────────────────────────┘
-          ▼
-┌─────────────────────────────────────────────────────────────┐
-│                 AGENTIC TERMINAL BACKEND                    │
-├─────────────────────────────────────────────────────────────┤
-│  ┌─────────────┐  ┌───────────────┐  ┌───────────────┐      │
-│  │Zynta Runner │  │ RedTeam Agent │  │Terminal Output│      │
-│  │(Playwright) │  │ (Dependency)  │  │(Listener GUI) │      │
-│  └─────────────┘  └───────────────┘  └───────────────┘      │
-└─────────────────────────────────────────────────────────────┘
+┌──────────────────────────────────────────────────────────────────┐
+│                     ZYNTA STUDIO v5.0                            │
+│                   Sovereign AI IDE Core                           │
+├──────────────────────────────────────────────────────────────────┤
+│                                                                  │
+│   ┌──────────────┐  ┌──────────────┐  ┌──────────────┐          │
+│   │  Sidebar      │  │ Editor Area  │  │ Live Preview │          │
+│   │  • Explorer   │  │ • Composer   │  │ • Artifacts  │          │
+│   │  • Git Panel  │  │ • AST Vis    │  │ • Device Sim │          │
+│   │  • Sovereign  │  │ • Glow Trail │  │ • Charts     │          │
+│   │  • Streaks    │  │ • Provenance │  │              │          │
+│   └───────┬───────┘  └──────┬───────┘  └──────────────┘          │
+│           │                 │                                    │
+│           ▼                 ▼                                    │
+│   ┌─────────────────────────────────────────────────────┐        │
+│   │              AGENTIC TERMINAL                       │        │
+│   │  • Execution Logs  • Logcat/ADB  • Time Travel      │        │
+│   │  • Telemetry       • Shadow Agents                   │        │
+│   └─────────────────────────────────────────────────────┘        │
+│                                                                  │
+├──────────────────────────────────────────────────────────────────┤
+│                    RUST BACKEND (TAURI)                           │
+│                                                                  │
+│   ┌────────────┐ ┌──────────┐ ┌──────────┐ ┌──────────────┐     │
+│   │ SEMAP      │ │ AST      │ │ Git      │ │ Time Travel  │     │
+│   │ Actors     │ │ Parser   │ │ Native   │ │ Debugger     │     │
+│   ├────────────┤ ├──────────┤ ├──────────┤ ├──────────────┤     │
+│   │ Frontend   │ │ Heuristic│ │ clone    │ │ Ring Buffer  │     │
+│   │ Backend    │ │ + tree-  │ │ commit   │ │ Drift Detect │     │
+│   │ DevOps     │ │ sitter   │ │ push/pull│ │ State Replay │     │
+│   └────────────┘ └──────────┘ └──────────┘ └──────────────┘     │
+│                                                                  │
+│   ┌────────────┐ ┌──────────┐ ┌──────────┐ ┌──────────────┐     │
+│   │ Provenance │ │ VFS      │ │ MCP      │ │ LLM Engine   │     │
+│   │ Blockchain │ │ Engine   │ │ Telemetry│ │ (Ollama)     │     │
+│   ├────────────┤ ├──────────┤ ├──────────┤ ├──────────────┤     │
+│   │ SHA-256    │ │ Atomic   │ │ Metrics  │ │ Local Only   │     │
+│   │ Chain      │ │ Snapshot │ │ Export   │ │ Zero-Egress  │     │
+│   │ USER/AI    │ │ Undo     │ │ Prom     │ │ PII Redact   │     │
+│   └────────────┘ └──────────┘ └──────────┘ └──────────────┘     │
+│                                                                  │
+└──────────────────────────────────────────────────────────────────┘
 ```
 
 ---
@@ -162,13 +222,12 @@ Check out our **[Real-World Use Cases](USE_CASES.md)** document to see how engin
   <h2>🚀 Quick Start & Installation</h2>
 </div>
 
-> **🍼 DEPLOYING TO DESKTOP?** Read our **[Detailed Deployment Guide](DEPLOYMENT_GUIDE.md)** for a complete step-by-step walkthrough on compiling Zynta Studio into a lightning-fast native Windows executable using Tauri!
-
-Get Zynta Studio running locally on your machine.
+> **🍼 DEPLOYING TO DESKTOP?** Read our **[Detailed Deployment Guide](DEPLOYMENT_GUIDE.md)** for a complete step-by-step walkthrough on compiling Zynta Studio into a native Windows `.exe` using Tauri!
 
 **Prerequisites:** 
-- Node.js installed.
-- Rust toolchain installed (for native bindings).
+- Node.js 18+ installed
+- Rust toolchain installed (`rustup`)
+- For local AI: [Ollama](https://ollama.ai/) with `llama3` model
 
 **1. Clone the repository**
 ```bash
@@ -188,14 +247,14 @@ npm run tauri dev
 
 ### 📦 Packaging into a `.exe` (Windows Executable)
 
-We use **Tauri** to bundle this incredibly complex application into a single, highly performant native executable. Turn your IDE into a standalone `.exe` you can share or deploy anywhere!
+We use **Tauri** to bundle this into a single, blazing-fast native executable (~15MB).
 
 ```bash
 # Build the production application
 npm run tauri build
 ```
 <p align="center">
-  <i>✨ That's it! Your shiny new executable will be waiting for you inside: ✨<br><code>src-tauri/target/release/bundle/nsis/</code> and <code>src-tauri/target/release/</code></i>
+  <i>✨ Your executable will be in: <code>src-tauri/target/release/bundle/nsis/</code> ✨</i>
 </p>
 
 ---
@@ -204,23 +263,23 @@ npm run tauri build
   <h2>🤝 Open Source Contribution</h2>
 </div>
 
-We believe the future of AI paradigms belongs to the Open Web. That's why this base model operates under the **GPL-3.0 License**.
+We believe the future of AI belongs to the Open Web. This operates under the **GPL-3.0 License**.
 
-**You cannot steal this model and hide the code.** However, **you ARE fully encouraged** to make your own custom IDE and fork this base—as long as you keep your derivative work Open Source!
-
-Check the **Issues** tab to start contributing to this awesome framework. We need help:
-* Wiring up real LLM endpoints (OpenAI, Anthropic).
-* Perfecting the Natural Language Debate consensus models.
-* Bolstering the Virtual File System persistency.
+**You cannot steal this model and hide the code.** But you ARE fully encouraged to fork and build your own custom IDE — as long as you keep your derivative work Open Source!
 
 ### 📝 How to Contribute
-We welcome all contributions, from bug fixes to complete new features! Look for issues tagged `"good first issue"`.
 
 1. **Fork** the repository ✨
 2. Create your Feature Branch: `git checkout -b feature/AmazingFeature`
 3. Commit your changes: `git commit -m 'feat: Add AmazingFeature'`
 4. Push to the branch: `git push origin feature/AmazingFeature`
 5. Open a **Pull Request** 🚀
+
+**We need help with:**
+- Wiring real LLM endpoints (OpenAI, Anthropic, Groq)
+- Full tree-sitter grammar integration for 10+ languages
+- Native `git2` replacement for the system git calls
+- Expanding the provenance ledger with digital signatures
 
 ---
 

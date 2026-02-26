@@ -22,7 +22,7 @@ impl McpClient {
 
     pub async fn call_tool(&self, tool: &str, params: Value, task_id: Option<&str>) -> Result<Value, String> {
         let url = format!("{}/mcp/tools/{}", self.base_url, tool);
-        let mut request = self.http_client.post(&url)
+        let request = self.http_client.post(&url)
             .bearer_auth(&self.auth_token)
             .json(&json!({ "params": params, "task_id": task_id }));
 
