@@ -79,8 +79,31 @@ Traditional IDEs are passive tools. You write code, you debug, you search for so
       <p>Powered by Tauri & React. Renders real-time, dynamic execution graphs (<code>VisualLogicTree</code>) mapping the agentic pathways as code is formed.</p>
     </td>
     <td>
+      <h3>✨ In-Line Composer (Cursor-Style)</h3>
+      <p>A native Floating Composer overlaid directly on your code editor for rapid LLM editing instructions.</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <h3>🖥️ Live Artifacts (Claude-Style)</h3>
+      <p>A real-time split-pane Preview window that renders UI components dynamically as agents generate HTML/React.</p>
+    </td>
+    <td>
+      <h3>🚀 Zynta Runner (Native Automations)</h3>
+      <p>Transforms the IDE into a DevOps orchestrator:<br>
+      • <b>Web (Playwright):</b> Auto-builds and GUI tests endpoints.<br>
+      • <b>Android (ADB/Gradle):</b> Auto-compiles APKs and launches emulators.<br>
+      • <b>Windows (PyInstaller):</b> Auto-packages EXEs and verifies silent installs.</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
       <h3>🛡️ Phase 6 & 7: Red-Teaming & CI/CD</h3>
       <p>Adversarial <b>RedTeamAgents</b> launch continuous jailbreaks countered by <b>BlueTeam</b> live-patching. Fully containerized with <b>Kubernetes Self-Healing</b> deployments.</p>
+    </td>
+    <td>
+      <h3>💡 Interactive Terminal Listener</h3>
+      <p>Zynta actively monitors terminal streams. If it spots a missing dependency (e.g. <code>command not found: python</code>), it prompts the user to auto-install it via <code>winget</code> or <code>brew</code>.</p>
     </td>
   </tr>
 </table>
