@@ -46,7 +46,10 @@
 Traditional IDEs are passive tools. Even with AI copilots, the burden of architecture, debugging, and deployment remains on the developer. Context windows are limited, AI often breaks existing code, and your intellectual property gets sent to cloud servers you don't control.
 
 ## 💡 The Solution
-**Zynta Studio v5.0** is an active participant in your development process. It uses a **Software Engineering Multi-Agent Protocol (SEMAP)** where specialized agents collaborate, debate, and write code entirely locally. It proves who wrote every line of code via a **blockchain provenance ledger**, and lets you **time-travel** through your application state to catch bugs before they happen.
+**Zynta Studio- **v1**: Genesis — Initial Rust + React scaffolding and basic Monaco integration. 
+- **v2**: OmniClaw Integration — First appearance of the background multi-agent orchestrator. 
+- **v3**: The "Big Brain" Update — Introduced the Local Vector DB, RAG Context, and Advanced Linting. 
+- **v4**: The "Hybrid Hive AI" Release — Code Provenance blockchain, Neural Time Travel, Socratic AI Mode, and Midnight Obsidian UI overhaul. **time-travel** through your application state to catch bugs before they happen.
 
 ---
 

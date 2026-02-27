@@ -1,7 +1,7 @@
 {
   "name": "zynta-studio",
   "private": true,
-  "version": "5.0.0",
+  "version": "4.0.0",
   "type": "module",
   "description": "Zynta Studio - Next-gen multi-agent powered agentic IDE",
   "scripts": {

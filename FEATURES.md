@@ -1,4 +1,4 @@
-# Zynta Studio v5.0 — Full Feature Reference
+# Zynta Studio v4.0.0 — Full Feature Reference
 
 Zynta Studio is a sovereign, multi-agent powered IDE built on Rust & React. Every feature listed below is implemented and functional.
 
@@ -19,6 +19,10 @@ Enterprise-grade metrics via the Model Context Protocol. Prometheus exporter on 
 - **DevOpsSemapAgent** — CI/CD pipelines, Docker, infrastructure-as-code
 - Each agent features an autonomous **auto-fix loop** for error remediation
 - Agents communicate via typed `Message` and `Contract` protocols
+- **Agentic Workflows (Qoder-Inspired):**
+  - **Ask Mode**: Provides deeply contextual answers and debugging code.
+  - **Agent Mode**: Delegates multi-file modifications and command executions autonomously.
+  - **Quest Mode**: Translates rough specs into full implementation plans, executes them, and validates the result.
 
 ### ⚖️ Agent Exchange (AEX)
 Combinatorial auctioning engine that distributes workloads to agents based on token capacity, context alignment, and operational cost.
@@ -56,7 +60,7 @@ Rust regex middleware that scrubs sensitive data (API keys, IPs, emails) from al
 
 ## 🎨 Premium UI Features
 
-### ✨ Dark Glassmorphism Design
+### ✨ Dark Glassmorphism Design (v4.0)
 - **Animated nebula background** with shifting radial gradients
 - **Frosted glass panels** with `backdrop-filter: blur(20px)`
 - **Agent glow trails** — neon scanning effect on active lines
@@ -67,6 +71,8 @@ Rust regex middleware that scrubs sensitive data (API keys, IPs, emails) from al
 ### ✍️ Inline Composer (Cursor-Style)
 Floating glassmorphism composer overlay with:
 - Standard mode for direct AI code generation
+- **Next-Edit-Suggestion (NES)** anticipating multi-line refactoring moves directly at the cursor
+- **Enhanced Context Engineering** that builds a repository wiki for deep architectural codebase awareness
 - **Socratic Mentor Mode** for guided learning (hints instead of answers)
 - Proprietary file locking (🔒) to prevent AI from accessing sensitive code
 - "Hint Map" that guides you toward the solution
@@ -77,7 +83,7 @@ Cross-platform rendering for Web, iOS, Android, Linux, and Windows:
 - Live "Get Started" button and animated bar charts
 - Real-time render status indicator
 
-### 🎮 Gamified Flow State
+### 🎮 Gamified Flow State (v4.0)
 - **Flow Mode** — Silences distractions, shows only current function
 - **The Bugslayer** — Fix 10 critical bugs in a day
 - **Clean Coder** — Maintain 95%+ test coverage for a week
@@ -117,5 +123,37 @@ One-toggle privacy. Cuts all outbound network requests. All AI processing runs o
 | **AST** | `parse_file_ast`, `get_ast_tree` |
 | **Git** | `git_clone`, `git_commit`, `git_pull`, `git_push`, `git_status`, `git_log`, `git_repo_info` |
 | **Time Travel** | `record_state`, `get_timeline`, `get_snapshot`, `detect_drift`, `clear_debug_timeline` |
-| **Provenance** | `record_provenance`, `query_provenance`, `verify_chain` |
 | **Core** | `write_file_atomic`, `undo_transaction`, `mcp_call_tool`, `generate_ui_asset`, `get_execution_tree`, `health`, `ready`, `ask_ollama` |
+
+---
+
+## 🌌 The Physics & Math Engine
+Elevating the IDE to a Computational Universe:
+- **Symbolic Math Parser**: Hovers over math expressions show a floating glassmorphism panel with live LaTeX rendering (powered by math.js and KaTeX).
+- **Dimensional Analysis Linter**: Real-time type-checking for physical units (`// @unit meters`). Flags invalid operations (e.g., adding meters to seconds) directly in the AST.
+- **Trig-Visualizer**: Live interactive waveforms drawn on HTML5 Canvas in the editor gutter wherever `Math.sin`/`cos` is detected.
+- **Vector Intelligence Class**: A pre-built `Vector3` and 3D kinematics engine with real-time trajectory previsualization via React Three Fiber.
+
+---
+
+## ⏳ God-Tier Architecture Add-Ons
+- **Chronos Engine (Time-Travel Debugging)**: True reverse-execution. Instruments the Node.js runtime and logs every state mutation into an immutable chunked database. Slide backwards and forwards through time to replay the Exact V8 heap state.
+- **Edge-Swarm Protocol**: WebRTC peer-to-peer offloading. Discovers nearby Android devices via mDNS and offloads intensive ML inference to their browsers via PWA/Service Workers to free up laptop resources.
+- **Quantum Circuit Visualizer**: Real-time 3D Bloch sphere rendering for quantum operations (`H q[0]`, `X q[1]`). Watch the state vector update in 3D space as you code.
+
+---
+
+## 🛸 "Black Project" Research Features
+- **zk-Compiler Bridge**: Annotate a function with `/* @zk */` and Zynta compiles its TypeScript AST into a verifiable zk-SNARK circuit (via R1CS mapping).
+- **Probabilistic Execution UI**: Variables inferred to have probability distributions show an interactive, draggable Normal Distribution (PDF) SVG tooltip with customizable `μ` and `σ` parameters.
+- **Reinforcement Learning Synthesizer**: Uses Proximal Policy Optimization (PPO) via a Python backend to mutate function bytecode/AST, actively benchmark it against the host CPU, and evolve the most performant variant.
+
+---
+
+## 🥷 Apex Predator Security Engine
+- **Fallback Router (Refusal Bypass)**: Transparently monitors streaming responses from cloud LLMs. If a refusal pattern is detected, the stream is seamlessly aborted and the prompt is silently rerouted to an uncensored local model (`dolphin-mixtral`).
+- **Polymorphic AST Obfuscator**: A red-teaming tool that applies deep Control Flow Flattening and XOR string encryption to any script, rewriting it into an unrecognizable state machine layout instantly.
+- **Ephemeral Sandbox**: Right-click any untrusted binary to spawn a Firecracker MicroVM or deeply isolated container. EBPF/seccomp logs syscalls, network traffic, and filesystem changes in a safe environment.
+- **Air-Gapped Inference**: Runs `llama.cpp` locally inside a restricted Linux network namespace (or bubblewrap) with strict `lo` loopback routing to guarantee zero proprietary code leakage.
+- **Automated Threat Modeling**: Parses Express.js/FastAPI router files to map out authentication flows, dumping an interactive Mermaid.js Attack Tree directly into the UI.
+- **Continuous Mutation Fuzzer**: An asynchronous background payload mutator that continuously hammers target API endpoints with XSS, prototype pollution, and malformed JSON payloads, isolating stack traces and capturing deterministic crash reproductions.

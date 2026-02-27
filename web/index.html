@@ -13,17 +13,18 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" />
     <style>
         :root {
-            --bg: #050508;
-            --bg-elevated: #0c0c14;
-            --card: rgba(255, 255, 255, 0.03);
-            --card-hover: rgba(255, 255, 255, 0.06);
-            --border: rgba(255, 255, 255, 0.08);
-            --text: #ffffff;
-            --muted: #8888aa;
+            --bg: #050505;
+            --bg-elevated: #0a0a0a;
+            --card: rgba(20, 20, 20, 0.6);
+            --card-hover: rgba(30, 30, 30, 0.8);
+            --border: rgba(0, 255, 255, 0.15);
+            --text: #e2e8f0;
+            --muted: #94a3b8;
             --indigo: #6366f1;
-            --violet: #8b5cf6;
-            --cyan: #22d3ee;
-            --glow-indigo: rgba(99, 102, 241, 0.4);
+            --violet: #ff44e6;
+            --cyan: #00ffff;
+            --glow-indigo: rgba(0, 255, 255, 0.3);
+            --glow-magenta: rgba(255, 68, 230, 0.3);
         }
 
         *,
@@ -138,7 +139,7 @@
             height: 800px;
             top: -300px;
             left: -200px;
-            background: radial-gradient(circle, var(--indigo), transparent 60%);
+            background: radial-gradient(circle, var(--glow-magenta), transparent 60%);
             animation: float 25s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
         }
 
@@ -300,11 +301,12 @@
             letter-spacing: -3px;
             line-height: 1;
             margin-bottom: 24px;
-            background: linear-gradient(135deg, #fff 0%, #fff 50%, #aaa 100%);
+            background: linear-gradient(135deg, #fff 0%, var(--cyan) 50%, var(--violet) 100%);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
             animation: fadeInUp 0.8s ease-out 0.2s both;
+            text-transform: uppercase;
         }
 
         .hero-subtitle {
@@ -352,9 +354,12 @@
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, var(--indigo), var(--violet));
-            color: white;
-            box-shadow: 0 10px 30px -10px var(--glow-indigo);
+            background: transparent;
+            color: var(--cyan);
+            border: 1px solid var(--cyan);
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.2), inset 0 0 15px rgba(0, 255, 255, 0.1);
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .btn-primary::before {
@@ -580,7 +585,9 @@
 
         .feature-card:hover .feature-icon {
             transform: scale(1.1) rotate(-5deg);
-            background: rgba(99, 102, 241, 0.1);
+            background: rgba(0, 255, 255, 0.1);
+            border-color: var(--cyan);
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
         }
 
         .feature-card h3 {
@@ -828,7 +835,7 @@
 
     <!-- HERO -->
     <section class="hero">
-        <div class="hero-badge">v5.0.0 SOVEREIGN AI RELEASE • OPEN SOURCE</div>
+        <div class="hero-badge">v4.0.0 HYBRID HIVE AI RELEASE • OPEN SOURCE</div>
 
         <h1 class="hero-title">Zynta Studio</h1>
 
@@ -912,32 +919,46 @@
                     Kubernetes self-healing CI/CD.</p>
             </div>
             <div class="feature-card reveal"
-                style="border-color: rgba(139, 92, 246, 0.5); background: rgba(139, 92, 246, 0.05);">
+                style="border-color: rgba(255, 68, 230, 0.5); background: rgba(255, 68, 230, 0.05);">
                 <div class="feature-icon">🔒</div>
-                <h3>Code Provenance Blockchain (v5.0)</h3>
+                <h3>Code Provenance Blockchain (v4.0)</h3>
                 <p>SHA-256 append-only ledger proving who wrote every line: [USER-AUTH] vs [ZYNTA-GEN]. Cryptographic
                     chain integrity verification.</p>
             </div>
             <div class="feature-card reveal"
-                style="border-color: rgba(139, 92, 246, 0.5); background: rgba(139, 92, 246, 0.05);">
+                style="border-color: rgba(255, 68, 230, 0.5); background: rgba(255, 68, 230, 0.05);">
                 <div class="feature-icon">⏰</div>
-                <h3>Neural Time Travel (v5.0)</h3>
+                <h3>Neural Time Travel (v4.0)</h3>
                 <p>Scrub through execution history. Ring-buffer captures 1024 snapshots. AI drift detection spots
                     unexpected variable mutations instantly.</p>
             </div>
             <div class="feature-card reveal"
-                style="border-color: rgba(139, 92, 246, 0.5); background: rgba(139, 92, 246, 0.05);">
+                style="border-color: rgba(255, 68, 230, 0.5); background: rgba(255, 68, 230, 0.05);">
                 <div class="feature-icon">✨</div>
-                <h3>Glassmorphism UI (v5.0)</h3>
+                <h3>Midnight Obsidian UI (v4.0)</h3>
                 <p>Premium dark frosted-glass panels with animated nebula background, agent glow trails, magnetic tabs,
                     and glass buttons throughout.</p>
             </div>
             <div class="feature-card reveal"
-                style="border-color: rgba(139, 92, 246, 0.5); background: rgba(139, 92, 246, 0.05);">
+                style="border-color: rgba(255, 68, 230, 0.5); background: rgba(255, 68, 230, 0.05);">
                 <div class="feature-icon">🎮</div>
-                <h3>Gamified Flow State (v5.0)</h3>
+                <h3>Gamified Flow State (v4.0)</h3>
                 <p>Flow Mode silences distractions. Earn "The Bugslayer" and "Clean Coder" streaks. Model switching
                     auto-selects fast vs heavy AI models.</p>
+            </div>
+            <div class="feature-card reveal"
+                style="border-color: rgba(34, 211, 238, 0.5); background: rgba(34, 211, 238, 0.05);">
+                <div class="feature-icon">🛡️</div>
+                <h3>Quest Mode (Qoder-Inspired)</h3>
+                <p>Delegate complex tasks. Zynta autonomously generates specs, executes multi-file edits, and delivers
+                    production-ready code.</p>
+            </div>
+            <div class="feature-card reveal"
+                style="border-color: rgba(34, 211, 238, 0.5); background: rgba(34, 211, 238, 0.05);">
+                <div class="feature-icon">🔮</div>
+                <h3>Next-Edit-Suggestion (NES)</h3>
+                <p>Powered by Enhanced Context Engineering, NES anticipates your next move, offering intelligent
+                    multi-line edits directly at your cursor.</p>
             </div>
         </div>
     </section>
@@ -978,6 +999,71 @@
             <div class="arch-step reveal"><span class="arch-num">PHASE 07</span>
                 <h4>CI/CD Self-Healing</h4>
                 <p>Kubernetes auto-scaling.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- RESEARCH & GOD-TIER FEATURES -->
+    <section id="research">
+        <div class="section-header reveal">
+            <span class="section-tag"
+                style="color: #ff44e6; background: rgba(255, 68, 230, 0.1); border-color: rgba(255, 68, 230, 0.2);">Classified</span>
+            <h2 class="section-title"
+                style="background: linear-gradient(135deg, #fff, #ff44e6); -webkit-background-clip: text; background-clip: text;">
+                God-Tier &
+                Black Project</h2>
+            <p class="section-desc">Pushing the frontier of agentic IDEs into physics, cryptography, and offensive
+                security research.</p>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-card reveal"
+                style="border-color: rgba(255, 68, 230, 0.3); box-shadow: 0 0 20px rgba(255, 68, 230, 0.05); background: rgba(255, 68, 230, 0.02);">
+                <div class="feature-icon"
+                    style="background: rgba(255, 68, 230, 0.1); border-color: rgba(255, 68, 230, 0.3);">⚛️</div>
+                <h3 style="color: #fff;">Physics & Math Engine</h3>
+                <p>Live LaTeX expression rendering. Real-time dimensional analysis linters. Vector kinematics, and
+                    interactive trig waveforms painted directly in the editor gutter.</p>
+            </div>
+            <div class="feature-card reveal"
+                style="border-color: rgba(255, 68, 230, 0.3); box-shadow: 0 0 20px rgba(255, 68, 230, 0.05); background: rgba(255, 68, 230, 0.02);">
+                <div class="feature-icon"
+                    style="background: rgba(255, 68, 230, 0.1); border-color: rgba(255, 68, 230, 0.3);">⏳</div>
+                <h3 style="color: #fff;">Chronos Engine</h3>
+                <p>True reverse execution. Zynta instruments the Node.js runtime to capture a chunked timeline, letting
+                    you step backward and reconstruct the exact V8 heap instantly.</p>
+            </div>
+            <div class="feature-card reveal"
+                style="border-color: rgba(255, 68, 230, 0.3); box-shadow: 0 0 20px rgba(255, 68, 230, 0.05); background: rgba(255, 68, 230, 0.02);">
+                <div class="feature-icon"
+                    style="background: rgba(255, 68, 230, 0.1); border-color: rgba(255, 68, 230, 0.3);">🌐</div>
+                <h3 style="color: #fff;">Edge-Swarm Protocol</h3>
+                <p>WebRTC P2P mesh offloading. The IDE dynamically discovers Android devices via mDNS to offload heavy
+                    neural network operations to their mobile browser environments.</p>
+            </div>
+            <div class="feature-card reveal"
+                style="border-color: rgba(255, 68, 230, 0.3); box-shadow: 0 0 20px rgba(255, 68, 230, 0.05); background: rgba(255, 68, 230, 0.02);">
+                <div class="feature-icon"
+                    style="background: rgba(255, 68, 230, 0.1); border-color: rgba(255, 68, 230, 0.3);">🔐</div>
+                <h3 style="color: #fff;">zk-Compiler Bridge</h3>
+                <p>Translates pure TypeScript functions directly into verifiable zk-SNARK circuits via R1CS constraints.
+                    Prove execution correctness dynamically without revealing private inputs.</p>
+            </div>
+            <div class="feature-card reveal"
+                style="border-color: rgba(255, 68, 230, 0.3); box-shadow: 0 0 20px rgba(255, 68, 230, 0.05); background: rgba(255, 68, 230, 0.02);">
+                <div class="feature-icon"
+                    style="background: rgba(255, 68, 230, 0.1); border-color: rgba(255, 68, 230, 0.3);">🥷</div>
+                <h3 style="color: #fff;">Apex Security Sandbox</h3>
+                <p>Spawns ephemeral Firecracker micro-VMs in under 100ms. Unleash Mutation Fuzzers against endpoints and
+                    use the Polymorphic AST Obfuscator to scramble red-team scripts.</p>
+            </div>
+            <div class="feature-card reveal"
+                style="border-color: rgba(255, 68, 230, 0.3); box-shadow: 0 0 20px rgba(255, 68, 230, 0.05); background: rgba(255, 68, 230, 0.02);">
+                <div class="feature-icon"
+                    style="background: rgba(255, 68, 230, 0.1); border-color: rgba(255, 68, 230, 0.3);">🧠</div>
+                <h3 style="color: #fff;">Probabilistic UI & RL Synth</h3>
+                <p>Reinforcement Learning engine uses PPO to mutate and benchmarks bytecode into optimal variants. View
+                    variables through draggable SVG Probability Density Functions.</p>
             </div>
         </div>
     </section>
@@ -1023,7 +1109,7 @@
                 <li><a href="https://www.linkedin.com/in/webspoilt/" target="_blank">LinkedIn</a></li>
                 <li><a href="mailto:heyzerodayhere@gmail.com">Email</a></li>
             </ul>
-            <p class="footer-copy">© 2026 Zynta Studio v5.0 · GPL-3.0 License · Built by Zeroday</p>
+            <p class="footer-copy">© 2026 Zynta Studio v4.0.0 · GPL-3.0 License · Built by Zeroday</p>
         </div>
     </footer>
 
